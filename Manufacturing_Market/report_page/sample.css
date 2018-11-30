@@ -1,0 +1,14 @@
+body{
+  background-color: #f8f9fc;
+  font-family: arial;
+}
+.container{
+  text-align: center;
+}
+/* svg{
+  border: solid #ffffff 1px;
+} */
+.markers{
+  stroke: #000;
+  stroke-width: 0.5px;
+}
