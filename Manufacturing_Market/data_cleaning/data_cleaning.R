@@ -10,7 +10,7 @@ plain_text_names <- gsub(' ', '_', plain_text_names)
 plain_text_names <- gsub('[(]%[)]', 'percent', plain_text_names)
 plain_text_names <- gsub('_[(]\\$1,000[)]', '', plain_text_names)
 
-plain_text_names <- gsub('[(/)]', '', plain_text_names)
+plain_text_names <- gsub('[,(/)]', '', plain_text_names)
 
 names(manufacturingDT) <- as.character(plain_text_names)
 manufacturingDT <- manufacturingDT[-1,]
@@ -21,11 +21,12 @@ manufacturingDT[, c(percent_columns):=NULL ]
 manufacturingDT[, Id2 := NULL]
 
 nonNumericCols <- c('Geographic_identifier_code', 'Geographic_area_name', '2012_NAICS_code', 'Meaning_of_2012_NAICS_code')
-nonNumericsDT <- manufacturingDT[, .(nonNumericCols)]
-manufacturingDT <- manufacturingDT[, lapply(.SD, as.numeric), .SDcols = !c('Geographic_identifier_code', 'Geographic_area_name', 'Meaning_of_2012_NAICS_code')]
+nonNumericsDT <- manufacturingDT[, ..nonNumericCols]
+manufacturingDT <- manufacturingDT[, lapply(.SD, as.numeric), .SDcols = !nonNumericCols]
 
-manufacturingDT
+manufacturingDT <- cbind(nonNumericsDT, manufacturingDT)
 
+## Realized with d3 you can read from .csv so this is unnecessary
 library(rjson)
 manufacturingJSON <- toJSON(unname(split(manufacturingDT, 1:nrow(manufacturingDT))))
-cat(manufacturingJSON)
+write(manufacturingJSON, '../report_page/manufacturing_data.json')
