@@ -1,0 +1,1 @@
+A visualization of data from the US Census Bureau's [Annual Survey of Manufactures](https://www.census.gov/data/tables/2016/econ/asm/2016-asm.html) produced during the Q4-2018 [Uptake](https://www.uptake.com/) internal Data Science hackathon.
