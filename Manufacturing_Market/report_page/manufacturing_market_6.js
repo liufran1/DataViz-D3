@@ -33,7 +33,7 @@ const retrieveCensusData = async (econVariables, naics, year, censusAPIKey) =>{
 };
 
 
-const getData = async function(manufacturingNAICS) {
+const getData = function(manufacturingNAICS) {
     let censusAPIKey = '66c3f4184903067fac362bdc2b64803f4221442d';
     let year = '2016';
     let econVariables = [
@@ -43,17 +43,14 @@ const getData = async function(manufacturingNAICS) {
         //'CEXMCH', //Capital expenditures on machinery and equipment (new and used) ($1,000)
         'RCPTOT' //Total value of shipments and receipts for services ($1,000)
     ];
-    let results = [];
-    return new Promise(function(resolve, reject){
-        for (naics of manufacturingNAICS) {
-            if (naics.toString().length == 4) {
-                console.log(`Getting data for NAICS ${naics}`);
-                // results.push(retrieveCensusData(econVariables, naics, year, censusAPIKey));
-                retrieveCensusData(econVariables, naics, year, censusAPIKey).then(data => results.push(data));
-            }
+    let promise_results = [];
+    for (naics of manufacturingNAICS){
+        if (naics.toString().length == 4) {
+            console.log(`Getting data for NAICS ${naics}`);
+            promise_results.push(retrieveCensusData(econVariables, naics, year, censusAPIKey));
         }
-        resolve(results); //resolve with value
-    });
+    }
+    return promise_results
 }
 
 
@@ -125,9 +122,12 @@ const plotData = async function(manufacturing_data) {
 const startingTime = performance.now();
 
 
-let manufacturing_data = Promise.resolve(getData(manufacturingNAICS))
-const endingTime = performance.now();
-console.log('This code took ' + (endingTime - startingTime) + ' milliseconds.');
-manufacturing_data.finally(plotData(manufacturing_data))
+Promise.all(getData(manufacturingNAICS)).then(function(data) {
+    // console.log(data);
+     plotData(data);
+     const endingTime = performance.now();
+     console.log('This code took ' + (endingTime - startingTime) + ' milliseconds.');
+})
+
 
 
