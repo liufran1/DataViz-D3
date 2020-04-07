@@ -34,13 +34,14 @@ const retrieveCensusData = async (econVariables, naics, year, censusAPIKey) =>{
 
 
 const getData = function(manufacturingNAICS) {
-    let censusAPIKey = '66c3f4184903067fac362bdc2b64803f4221442d';
+    let censusAPIKey = '66c3f4184903067fac362bdc2b64803f4221442d'; //
     let year = '2016';
     let econVariables = [
         'NAICS_TTL', //NAICS Title
         'EMP', //Number of employees
         'CSTMTOT', //Total cost of materials ($1,000)
         //'CEXMCH', //Capital expenditures on machinery and equipment (new and used) ($1,000)
+        'CEXTOT', //Total capital expenditures
         'RCPTOT' //Total value of shipments and receipts for services ($1,000)
     ];
     let promise_results = [];
@@ -55,8 +56,15 @@ const getData = function(manufacturingNAICS) {
 
 
 
-const plotData = async function(manufacturing_data) {
+const plotData = function(manufacturing_data) {
     console.log("Data: \n")
+    manufacturing_data.forEach(function(d){
+      d.EMP = +d.EMP;
+      d.CSTMTOT = +d.CSTMTOT;
+      d.CEXTOT = +d.CEXTOT;
+      d.RCPTOT = +d.RCPTOT;
+      d.time = +d.time;
+    });
     console.log(manufacturing_data)
     console.log(d3.extent(manufacturing_data,function(d){return d.EMP}))
         // build the SVG 
@@ -78,9 +86,9 @@ const plotData = async function(manufacturing_data) {
     // suspect the scaling isn't working because it's being based on the whole dataset
     // build the scales
     //posX = d3.scaleLinear()
-    posX = d3.scaleLog()
+    posX = d3.scaleLinear()
         .domain([0, 100])
-        .domain(d3.extent(manufacturing_data,function(d){return d.CSTMTOT}))
+        .domain(d3.extent(manufacturing_data,function(d){return d.CEXTOT}))
         .range([0, mywidth]);
     //posY = d3.scaleLinear()
     posY = d3.scaleLog()
@@ -90,9 +98,9 @@ const plotData = async function(manufacturing_data) {
     sizeX = d3.scaleLinear()
         .domain([0, 10000000]) 
         .range([0, 1]);
-    sizeY = d3.scaleLinear()
-        .domain([0, 10000000]) 
-        .range([0, 1]);
+    // sizeY = d3.scaleLinear()
+    //     .domain([0, 10000000]) 
+    //     .range([0, 1]);
     color = d3.scaleOrdinal(d3.schemeCategory10);
 
     // Bubbles
@@ -104,10 +112,10 @@ const plotData = async function(manufacturing_data) {
             .attr("class","markers")
             // .filter(function(d) { return d.Year == 2016 && d["2012_NAICS_code"].length == 4}) 
             //.attr("cx", function(d){return posX(d.Total_cost_of_materials);})
-            .attr("cx", function(d){return posX(d.CSTMTOT);})
+            .attr("cx", function(d){return posX(d.CEXTOT);})
             .attr("cy", function(d){console.log(posX(d.EMP)); return posY(d.EMP);})
-            // .attr("r",  function(d){return sizeX(d.RCPTOT);})
-            // .attr("fill",function(d){return color(d.NAICS_TTL);});
+            .attr("r",  function(d){return sizeX(d.RCPTOT);})
+            .attr("fill",function(d){return color(d.NAICS_TTL);});
 
 
     svg.append("g")
@@ -127,7 +135,14 @@ Promise.all(getData(manufacturingNAICS)).then(function(data) {
      plotData(data);
      const endingTime = performance.now();
      console.log('This code took ' + (endingTime - startingTime) + ' milliseconds.');
-})
 
+    //  function saveText(text, filename){  //Debug - save JSON to disk
+    //   var a = document.createElement('a');
+    //   a.setAttribute('href', 'data:text/plain;charset=utf-8,'+encodeURIComponent(text));
+    //   a.setAttribute('download', filename);
+    //   a.click()
+    // }
+    // saveText( JSON.stringify(data), "asm_2016.json" );
+})
 
 
