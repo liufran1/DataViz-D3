@@ -1,4 +1,4 @@
-const plotDataTwo = function(manufacturing_data) {
+const plotDataTwo = function(manufacturing_data, year) {
 
     // build the SVG 
     svgwidth = 900;
@@ -42,7 +42,7 @@ const plotDataTwo = function(manufacturing_data) {
       .enter()
         .append("circle")
             .attr("class","markers")
-            .filter(function(d) { return d.Year == 2016 && d["2012_NAICS_code"].length == 3}) 
+            .filter(function(d) { return d.Year == year && d["2012_NAICS_code"].length == 3}) 
             //.attr("cx", function(d){return posX(d.Total_cost_of_materials);})
             .attr("cx", function(d){return posX(d.Capital_expenditures_for_machinery_and_equipment);})
             .attr("cy", function(d){return posY(d.Number_of_employees);})
@@ -74,4 +74,4 @@ const plotDataTwo = function(manufacturing_data) {
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(posY));
     }
-plotDataTwo(manufacturing_data_global)
+plotDataTwo(manufacturing_data_global, 2016)
