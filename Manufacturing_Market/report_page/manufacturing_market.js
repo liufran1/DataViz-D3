@@ -15,19 +15,15 @@ let svg = d3.select('.container_main')
     .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
-d3.selectAll('button').on("click", function() {
-    console.log("button clicked")
-});
 
-
-const plotData = function(manufacturing_data, year) {
+const plotData = function(manufacturing_data, year, xdimension) {
     let filtered_data = manufacturing_data.filter(function(d) { return d["Year"] == year && d["2012_NAICS_code"].length == 4})
 
     // suspect the scaling isn't working because it's being based on the whole dataset
     // build the scales
     //posX = d3.scaleLinear()
     posX = d3.scaleLog()
-        .domain(d3.extent(manufacturing_data,function(d){return d.Total_cost_of_materials}))
+        .domain(d3.extent(manufacturing_data,function(d){return d[xdimension]}))
         .range([0, mywidth]);
     //posY = d3.scaleLinear()
     posY = d3.scaleLog()
@@ -55,8 +51,9 @@ const plotData = function(manufacturing_data, year) {
     circles.enter()
         .append("circle")
             .attr("class","markers")
+            .merge(circles).transition()
+            .attr("cx", function(d){return posX(d[xdimension]);})
             //.attr("cx", function(d){return posX(d.Total_cost_of_materials);})
-            .attr("cx", function(d){return posX(d.Capital_expenditures_for_machinery_and_equipment);})
             .attr("cy", function(d){return posY(d.Number_of_employees);})
             .attr("r",  function(d){return sizeX(d.Total_value_of_shipments_and_receipts_for_services);})
             .attr("fill",function(d){return color(d.Meaning_of_2012_NAICS_code);});
@@ -68,12 +65,12 @@ const plotData = function(manufacturing_data, year) {
     //         .duration(1000)
     //         .call(yAxis);
             
-    // d3.transition(svg).select(".cx.axis")
-    //         .transition()
-    //         .duration(1000)
-    //         .call(xAxis);
+    d3.transition(svg).select(".cx.axis")
+            .transition()
+            .duration(1000)
+            .call(posX);
     
-    // make the axes
+    // make the axes - currently it replots the axis everytime
     svg.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + myheight + ")")
@@ -85,7 +82,7 @@ const plotData = function(manufacturing_data, year) {
 }
 // console.log(manufacturing_data_global)
 
-plotData(manufacturing_data_global, 2016)
+plotData(manufacturing_data_global, 2015, 'Capital_expenditures_for_machinery_and_equipment')
 
 document.addEventListener('DOMContentLoaded', function(){
     let buttons = document.getElementsByTagName('button')
@@ -93,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (const child of buttons) {
         child.addEventListener("click", function() {
             console.log(child.id)
-            plotData(manufacturing_data_global, child.id)
+            plotData(manufacturing_data_global, child.id, 'Capital_expenditures_for_machinery_and_equipment')
         });
     }
 
