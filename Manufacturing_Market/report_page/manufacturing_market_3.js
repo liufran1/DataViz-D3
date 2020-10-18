@@ -1,17 +1,18 @@
-const plotDataTwo = function(manufacturing_data, year) {
+// build the SVG 
+svgwidth = 900;
+svgheight = 600;
+margin = {top: 12, right: -200, bottom: 50, left: 50};
+mywidth = svgwidth-margin.left-margin.right;
+myheight = svgheight-margin.top-margin.bottom;
 
-    // build the SVG 
-    svgwidth = 900;
-    svgheight = 600;
-    margin = {top: 12, right: -200, bottom: 50, left: 50};
-    mywidth = svgwidth-margin.left-margin.right;
-    myheight = svgheight-margin.top-margin.bottom;
-    svg = d3.select('.container_bottom')
-      .append("svg")
-      .attr("width",mywidth+margin.left+margin.right)
-      .attr("height",myheight+margin.top+margin.bottom)
-      .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+svg2 = d3.select('.container_bottom')
+    .append("svg")
+    .attr("width",mywidth+margin.left+margin.right)
+    .attr("height",myheight+margin.top+margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+const plotDataTwo = function(manufacturing_data, year) {
 
     // TODO: function to filter data
 
@@ -37,7 +38,7 @@ const plotDataTwo = function(manufacturing_data, year) {
 
     // Bubbles
     // use x = Capital_expenditures_for_machinery_and_equipment
-    svg.selectAll('.markers')
+    svg2.selectAll('.markers')
       .data(manufacturing_data)
       .enter()
         .append("circle")
@@ -51,7 +52,7 @@ const plotDataTwo = function(manufacturing_data, year) {
 
     // Add data label
 
-    svg.selectAll("text")
+    svg2.selectAll("text")
         .data(manufacturing_data)
         .enter()
             .append("text")
@@ -66,11 +67,11 @@ const plotDataTwo = function(manufacturing_data, year) {
 
     // make the axes
 
-    svg.append("g")
+    svg2.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + myheight + ")")
         .call(d3.axisBottom(posX));
-    svg.append("g")
+    svg2.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(posY));
     }
