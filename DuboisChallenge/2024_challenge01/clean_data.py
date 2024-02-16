@@ -58,4 +58,18 @@ if response.status_code == 200:
 else:
     print("Failed to download the zip file.")
 
+gdf.rename(columns={'data1880_P':'data1880', 'data1870 (': 'data1870'}, inplace=True)
+gdf['data1870'].fillna(gdf['data1880'], inplace=True)
+
+color_map = {
+    '20000 - 30000': '#332659',
+    '15000 - 20000': '#704a34',
+    '10000 - 15000': '#d4a96e',
+    '5000 - 10000': '#ce3b50',
+    '2500 - 5000' : '#dea59b',
+    '1000 - 2500': '#e6ab38',
+    '> 1000': '#4e5449'
+
+}
+
 gdf.to_file("georgia_data.json", driver="GeoJSON")
