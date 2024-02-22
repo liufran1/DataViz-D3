@@ -19,8 +19,8 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 
 2005 - 2015: 
 [CEIC](https://www.ceicdata.com/en/indicator/vietnam/motor-vehicle-registered)
-2016 - 2019: 
 
+2016 - 2019: 
 [Nationmaster](https://www.nationmaster.com/nmx/timeseries/vietnam-global-passenger-cars-in-use )
 
 2021: 
