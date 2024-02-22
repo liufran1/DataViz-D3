@@ -39,3 +39,11 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 # Population data: 
 
 [General Statistics Office of Vietnam](https://www.gso.gov.vn/en)
+
+# GDP data:
+[World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN)
+
+# Geodata
+[Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
+
+[Population by district](https://data.opendevelopmentmekong.net/dataset/6f054351-bf2c-422e-8deb-0a511d63a315/resource/78b3fb31-8c96-47d3-af64-d1a6e168e2ea/download/diaphanhuyen.geojson)

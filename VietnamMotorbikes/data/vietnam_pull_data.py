@@ -34,3 +34,10 @@ def format_vehicle_data():
     df['Population'] = df['Population'].astype('str').str.replace(',','').astype('float').astype('Int64')
 
     df.to_csv('VietnamVehicles_1991-2022.csv',index=False)
+
+def format_gdp_data():
+    df = pd.read_csv('API_NY.GDP.PCAP.CD_DS2_en_csv_v2_184.csv') #https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN
+    out_df = pd.melt(df.loc[df['Country Code']=='VNM'], id_vars=['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'])[:63]
+    out_df.rename(columns={'variable':'Year', 'value':'GDPperCapita'}, inplace=True)
+    out_df['Year'] = out_df['Year'].astype('int')
+    out_df.loc[out_df['Year']>1990][['Country Code','Year','GDPperCapita']].to_csv('VietnamGDPpcap_1991-2022.csv',index=False)
