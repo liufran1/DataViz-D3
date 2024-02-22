@@ -48,3 +48,7 @@ def format_carbon_data():
     out_df.rename(columns={'variable':'Year', 'value':'CO2_emissions'}, inplace=True)
     out_df['Year'] = out_df['Year'].astype('int')
     out_df.loc[out_df['Year']>1990][['Country Code','Year','CO2_emissions']].to_csv('VietnamCO2_1991-2022.csv',index=False)
+
+def format_carbon_breakdown_data():
+    df = pd.read_csv('ghg-emissions-by-sector.csv')
+    df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)

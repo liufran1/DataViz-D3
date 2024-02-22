@@ -44,7 +44,9 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 [World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN)
 
 # Carbon emissions data:
-[World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=2021&locations=VN&start=1961&view=chart&year=2019)
+Over time: [World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=2021&locations=VN&start=1961&view=chart&year=2019)
+
+By source: [Climate Watch (2023) – with major processing by Our World in Data. “Land-use change and forestry” [dataset]. Climate Watch, “Greenhouse gas emissions by sector” [original data].](https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM)
 
 # Geodata
 [Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
