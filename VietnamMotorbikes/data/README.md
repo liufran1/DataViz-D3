@@ -48,6 +48,10 @@ Over time: [World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=
 
 By source: [Climate Watch (2023) – with major processing by Our World in Data. “Land-use change and forestry” [dataset]. Climate Watch, “Greenhouse gas emissions by sector” [original data].](https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM)
 
+# Particulate matter pollution exposure data:
+[Our World in Data](https://ourworldindata.org/grapher/exposure-pollution-above-who-targets?time=earliest..2017&country=~VNM)
+
+
 # Geodata
 [Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
 
