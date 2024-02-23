@@ -51,4 +51,5 @@ def format_carbon_data():
 
 def format_carbon_breakdown_data():
     df = pd.read_csv('ghg-emissions-by-sector.csv')
-    df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
+    out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year'])
+    out_df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
