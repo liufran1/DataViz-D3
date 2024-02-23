@@ -30,10 +30,14 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 ## GDP data:
 * [World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN)
 
+* [World Bank Income Groups](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups)
+
 ## Carbon emissions data:
 * Over time: [World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=2021&locations=VN&start=1961&view=chart&year=2019)
 
 * By source: [Climate Watch (2023) – with major processing by Our World in Data. “Land-use change and forestry” [dataset]. Climate Watch, “Greenhouse gas emissions by sector” [original data].](https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM)
+
+* Energy composition: [IEA](https://www.iea.org/countries/viet-nam/energy-mix)
 
 ## Particulate matter data:
 * Pollution exposure: [Our World in Data](https://ourworldindata.org/grapher/exposure-pollution-above-who-targets?time=earliest..2017&country=~VNM)
@@ -43,7 +47,7 @@ TTQ Nguyen, W Takeuchi, P Misra, S Hayashida
 Atmospheric Chemistry and Physics, 2021 acp.copernicus.org](https://acp.copernicus.org/articles/21/2795/2021/acp-21-2795-2021.pdf)
 
 ## Health data:
-* Deaths by risk factor: [Our World in Data](https://ourworldindata.org/outdoor-air-pollution)
+* Deaths by risk factor: [Hannah Ritchie and Max Roser (2022) - “Outdoor Air Pollution” Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/outdoor-air-pollution' [Online Resource]](https://ourworldindata.org/outdoor-air-pollution)
 
 ## Geodata
 * [Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
