@@ -50,6 +50,62 @@ def format_carbon_data():
     out_df.loc[out_df['Year']>1990][['Country Code','Year','CO2_emissions']].to_csv('VietnamCO2_1991-2022.csv',index=False)
 
 def format_carbon_breakdown_data():
-    df = pd.read_csv('ghg-emissions-by-sector.csv')
+    df = pd.read_csv('ghg-emissions-by-sector.csv') # https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM
     out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year'])
     out_df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
+
+def format_health_data(): 
+    df = pd.read_csv('number-of-deaths-by-risk-factor.csv') # https://ourworldindata.org/outdoor-air-pollution
+    out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year']).replace('Deaths that are from all causes attributed to ','', regex=True).replace(', in both sexes aged all ages', '', regex=True)
+    # Categorization via ChatGPT 3.5. 
+    # Prompt: """
+    # the following is a list of causes of death - group them into categories. for example, "diet low in fruits" and "diet high in sodium" could both be collapsed into "diet":  ['high systolic blood pressure', 'diet high in sodium',
+    #        'diet low in whole grains', 'alcohol use', 'diet low in fruits',
+    #        'unsafe water source', 'secondhand smoke', 'low birth weight',
+    #        'child wasting', 'unsafe sex', 'diet low in nuts and seeds',
+    #        'household air pollution from solid fuels',
+    #        'diet low in vegetables', 'smoking', 'high fasting plasma glucose',
+    #        'air pollution', 'high body-mass index', 'unsafe sanitation',
+    #        'drug use', 'low bone mineral density', 'vitamin a deficiency',
+    #        'child stunting', 'non-exclusive breastfeeding', 'iron deficiency',
+    #        'ambient particulate matter pollution', 'low physical activity',
+    #        'no access to handwashing facility', 'high ldl cholesterol']
+    # """
+    # Prompt: """the original input I provided was from a Python array - provide a python dictionary translating the original causes into the five categories you provided"""
+
+    causes_to_categories = {
+        'high systolic blood pressure': 'Health Conditions and Deficiencies',
+        'diet high in sodium': 'Diet-related Factors',
+        'diet low in whole grains': 'Diet-related Factors',
+        'alcohol use': 'Substance Use',
+        'diet low in fruits': 'Diet-related Factors',
+        'unsafe water source': 'Environmental Factors',
+        'secondhand smoke': 'Environmental Factors',
+        'low birth weight': 'Health Conditions and Deficiencies',
+        'child wasting': 'Health Conditions and Deficiencies',
+        'unsafe sex': 'Environmental Factors',
+        'diet low in nuts and seeds': 'Diet-related Factors',
+        'household air pollution from solid fuels': 'Environmental Factors',
+        'diet low in vegetables': 'Diet-related Factors',
+        'smoking': 'Substance Use',
+        'high fasting plasma glucose': 'Health Conditions and Deficiencies',
+        'air pollution': 'Environmental Factors',
+        'high body-mass index': 'Diet-related Factors',
+        'unsafe sanitation': 'Environmental Factors',
+        'drug use': 'Substance Use',
+        'low bone mineral density': 'Health Conditions and Deficiencies',
+        'vitamin a deficiency': 'Health Conditions and Deficiencies',
+        'child stunting': 'Health Conditions and Deficiencies',
+        'non-exclusive breastfeeding': 'Behavioral and Lifestyle Factors',
+        'iron deficiency': 'Health Conditions and Deficiencies',
+        'ambient particulate matter pollution': 'Environmental Factors',
+        'low physical activity': 'Behavioral and Lifestyle Factors',
+        'no access to handwashing facility': 'Environmental Factors',
+        'high ldl cholesterol': 'Health Conditions and Deficiencies'
+    }
+
+def format_particulate_data():
+    pm_df = pd.read_csv('/home/franklin/Downloads/HCMC_PMpollution - Sheet1.csv') # https://docs.google.com/spreadsheets/d/1KK8ulgPxQtF4SV-FyXXmKW_1vhL-fxAoyaU-LmlIM_Q/edit#gid=0
+    pm_df = pd.melt(pm_df, id_vars=['Pollutant', 'Source'])
+    pm_df.rename(columns={'variable':'Year'},inplace=True)
+    pm_df['Year'] = pm_df['Year'].astype('int')

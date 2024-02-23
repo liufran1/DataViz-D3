@@ -1,58 +1,51 @@
 Data on number of motorbikes and passenger cars had to be cobbled together from different sources that each used different methodologies, so there are discontinuities that would not stand up to any kind of rigorous scrutiny, but is ballpark enough for my informal purposes
 
-# Motorbike data sources:
-1991 - 2004: 
+## Motorbike data sources:
+* 1991 - 2004: [Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
 
-[Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
+* 2004 - 2014: [Nguyen, D. H., Duong, H. T., Nguyen, H. T., & Nguyen, B. N. (2015). Motorcycles in Vietnam: Essential Data Estimated until 2014 and Different Impacts of Socio-economic Conditions on Their Growth for Long-and for Short-term. Journal of the Eastern Asia Society for Transportation Studies, 11.](https://doi.org/10.11175/easts.11.1945)
 
-2004 - 2014: 
+* 2015 - 2020: [ASEAN Stats](https://data.aseanstats.org/indicator/ASE.TRP.ROD.B.011)
 
-[Nguyen, D. H., Duong, H. T., Nguyen, H. T., & Nguyen, B. N. (2015). Motorcycles in Vietnam: Essential Data Estimated until 2014 and Different Impacts of Socio-economic Conditions on Their Growth for Long-and for Short-term. Journal of the Eastern Asia Society for Transportation Studies, 11.](https://doi.org/10.11175/easts.11.1945)
+## Car data sources:
+* 1991 - 2004: [Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
 
-2015 - 2020: 
+* 2005 - 2015: [CEIC](https://www.ceicdata.com/en/indicator/vietnam/motor-vehicle-registered)
 
-[ASEAN Stats](https://data.aseanstats.org/indicator/ASE.TRP.ROD.B.011)
+* 2016 - 2019: [Nationmaster](https://www.nationmaster.com/nmx/timeseries/vietnam-global-passenger-cars-in-use )
 
-# Car data sources:
-1991 - 2004: 
-[Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
+* 2021: [Vietnamnet](https://vietnamnet.vn/en/most-vietnamese-need-about-12-years-of-savings-to-buy-a-car-2035656.html )
 
-2005 - 2015: 
-[CEIC](https://www.ceicdata.com/en/indicator/vietnam/motor-vehicle-registered)
+## Urbanization data sources:
+* 1991 - 2004: [Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
 
-2016 - 2019: 
-[Nationmaster](https://www.nationmaster.com/nmx/timeseries/vietnam-global-passenger-cars-in-use )
+* 2004 - 2014: [Nguyen, D. H., Duong, H. T., Nguyen, H. T., & Nguyen, B. N. (2015). Motorcycles in Vietnam: Essential Data Estimated until 2014 and Different Impacts of Socio-economic Conditions on Their Growth for Long-and for Short-term. Journal of the Eastern Asia Society for Transportation Studies, 11.](https://doi.org/10.11175/easts.11.1945)
 
-2021: 
-[Vietnamnet](https://vietnamnet.vn/en/most-vietnamese-need-about-12-years-of-savings-to-buy-a-car-2035656.html )
+* 2015-2022: [Statista](https://www.statista.com/statistics/444882/urbanization-in-vietnam/ )
 
-# Urbanization data sources:
-1991 - 2004: 
-[Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
+## Population data: 
 
-2004 - 2014: 
-[Nguyen, D. H., Duong, H. T., Nguyen, H. T., & Nguyen, B. N. (2015). Motorcycles in Vietnam: Essential Data Estimated until 2014 and Different Impacts of Socio-economic Conditions on Their Growth for Long-and for Short-term. Journal of the Eastern Asia Society for Transportation Studies, 11.](https://doi.org/10.11175/easts.11.1945)
+* [General Statistics Office of Vietnam](https://www.gso.gov.vn/en)
 
-2015-2022: 
-[Statista](https://www.statista.com/statistics/444882/urbanization-in-vietnam/ )
+## GDP data:
+* [World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN)
 
-# Population data: 
+## Carbon emissions data:
+* Over time: [World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=2021&locations=VN&start=1961&view=chart&year=2019)
 
-[General Statistics Office of Vietnam](https://www.gso.gov.vn/en)
+* By source: [Climate Watch (2023) – with major processing by Our World in Data. “Land-use change and forestry” [dataset]. Climate Watch, “Greenhouse gas emissions by sector” [original data].](https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM)
 
-# GDP data:
-[World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN)
+## Particulate matter data:
+* Pollution exposure: [Our World in Data](https://ourworldindata.org/grapher/exposure-pollution-above-who-targets?time=earliest..2017&country=~VNM)
 
-# Carbon emissions data:
-Over time: [World Bank](https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?end=2021&locations=VN&start=1961&view=chart&year=2019)
+* Distribution:  [Emission mapping of key sectors in Ho Chi Minh City, Vietnam, using satellite-derived urban land use data
+TTQ Nguyen, W Takeuchi, P Misra, S Hayashida
+Atmospheric Chemistry and Physics, 2021 acp.copernicus.org](https://acp.copernicus.org/articles/21/2795/2021/acp-21-2795-2021.pdf)
 
-By source: [Climate Watch (2023) – with major processing by Our World in Data. “Land-use change and forestry” [dataset]. Climate Watch, “Greenhouse gas emissions by sector” [original data].](https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM)
+## Health data:
+* Deaths by risk factor: [Our World in Data](https://ourworldindata.org/outdoor-air-pollution)
 
-# Particulate matter pollution exposure data:
-[Our World in Data](https://ourworldindata.org/grapher/exposure-pollution-above-who-targets?time=earliest..2017&country=~VNM)
+## Geodata
+* [Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
 
-
-# Geodata
-[Province boundaries](https://github.com/nguyenduy1133/Free-GIS-Data/blob/c1a1dc5adae1a80ecbff77ae88bd758801004de9/VietNam/Administrative/Provinces_included_Paracel_SpratlyIslands_combine.geojson?raw=true)
-
-[Population by district](https://data.opendevelopmentmekong.net/dataset/6f054351-bf2c-422e-8deb-0a511d63a315/resource/78b3fb31-8c96-47d3-af64-d1a6e168e2ea/download/diaphanhuyen.geojson)
+* [Population by district](https://data.opendevelopmentmekong.net/dataset/6f054351-bf2c-422e-8deb-0a511d63a315/resource/78b3fb31-8c96-47d3-af64-d1a6e168e2ea/download/diaphanhuyen.geojson)
