@@ -111,3 +111,4 @@ def format_particulate_data():
     pm_df = pd.melt(pm_df, id_vars=['Pollutant', 'Source']) # Pollution measured in millions kg
     pm_df.rename(columns={'variable':'Year'},inplace=True)
     pm_df['Year'] = pm_df['Year'].astype('int')
+    pm_df.to_csv('HCMC_PMpollution.csv')
