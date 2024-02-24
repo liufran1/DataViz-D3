@@ -103,9 +103,11 @@ def format_health_data():
         'no access to handwashing facility': 'Environmental Factors',
         'high ldl cholesterol': 'Health Conditions and Deficiencies'
     }
+    out_df['categories'] = out_df['variable'].apply(lambda x: causes_to_categories[x])
+    out_df.to_csv('VietnamDeathCauses_1990-2019.csv', index=False)
 
 def format_particulate_data():
-    pm_df = pd.read_csv('/home/franklin/Downloads/HCMC_PMpollution - Sheet1.csv') # https://docs.google.com/spreadsheets/d/1KK8ulgPxQtF4SV-FyXXmKW_1vhL-fxAoyaU-LmlIM_Q/edit#gid=0
+    pm_df = pd.read_csv('HCMC_PMpollution - Sheet1.csv') # https://docs.google.com/spreadsheets/d/1KK8ulgPxQtF4SV-FyXXmKW_1vhL-fxAoyaU-LmlIM_Q/edit#gid=0
     pm_df = pd.melt(pm_df, id_vars=['Pollutant', 'Source']) # Pollution measured in millions kg
     pm_df.rename(columns={'variable':'Year'},inplace=True)
     pm_df['Year'] = pm_df['Year'].astype('int')
