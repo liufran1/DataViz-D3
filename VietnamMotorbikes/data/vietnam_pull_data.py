@@ -112,3 +112,25 @@ def format_particulate_data():
     pm_df.rename(columns={'variable':'Year'},inplace=True)
     pm_df['Year'] = pm_df['Year'].astype('int')
     pm_df.to_csv('HCMC_PMpollution.csv')
+
+def format_air_quality_data():
+    newyork_df = pd.read_csv('/home/franklin/Downloads/new-york-air-quality.csv')
+    hanoi_df = pd.read_csv('/home/franklin/Downloads/hanoi,-vietnam-air-quality.csv')
+    # hcmc_df = pd.read_csv('/home/franklin/Downloads/ho-chi minh city us consulate, vietnam-air-quality.csv') looks like HCMC is currently offline
+
+    newyork_df['city'] = "New York"
+    newyork_df['date'] = pd.to_datetime(newyork_df['date']).dt.date
+
+    hanoi_df['city'] = "Hanoi"
+    hanoi_df['date'] = pd.to_datetime(hanoi_df['date']).dt.date
+
+    # hcmc_df['city'] = "Ho Chi Minh City"
+    # hcmc_df['date'] = pd.to_datetime(hcmc_df['date']).dt.date
+
+    out_df = pd.concat([newyork_df,hanoi_df])
+    out_df.rename(columns=lambda x: x.strip(),inplace=True)
+    out_df.loc[(out_df['pm25'].notna()) & 
+                      (out_df['date'] >= pd.to_datetime('2023/01/01').date()) &
+                      (out_df['date'] < pd.to_datetime('2024/01/01').date()) &
+                      (out_df['city'].isin(['New York', 'Hanoi']))
+                     ].sort_values(['date','city']).to_csv('VietnamVsNYCpmpollution_2023.csv',index=False)

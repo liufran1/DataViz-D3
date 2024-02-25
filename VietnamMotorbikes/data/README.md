@@ -52,8 +52,8 @@ TTQ Nguyen, W Takeuchi, P Misra, S Hayashida
 Atmospheric Chemistry and Physics, 2021 acp.copernicus.org](https://acp.copernicus.org/articles/21/2795/2021/acp-21-2795-2021.pdf)
 
 ## Air quality data:
-* Historical AQI: [World Air Quality Historical Database](https://aqicn.org/historical/)
-<!-- * Historical PM 2.5 concentrations: [US Department of State](https://www.airnow.gov/international/us-embassies-and-consulates/#Vietnam$Hanoi) -->
+* Historical PM 2.5 concentrations: [World Air Quality Historical Database](https://aqicn.org/historical/)
+<!-- * Historical AQI: [US Department of State](https://www.airnow.gov/international/us-embassies-and-consulates/#Vietnam$Hanoi) -->
 
 ## Health data:
 * Deaths by risk factor: [Hannah Ritchie and Max Roser (2022) - “Outdoor Air Pollution” Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/outdoor-air-pollution' [Online Resource]](https://ourworldindata.org/outdoor-air-pollution)
