@@ -114,8 +114,15 @@ def format_particulate_data():
     pm_df.to_csv('HCMC_PMpollution.csv')
 
 def format_air_quality_data():
-    newyork_df = pd.read_csv('/home/franklin/Downloads/new-york-air-quality.csv')
-    hanoi_df = pd.read_csv('/home/franklin/Downloads/hanoi,-vietnam-air-quality.csv')
+    # rawdata = []
+    # for i in range(2015, 2023):
+    #     df = pd.read_csv(f'https://dosairnowdata.org/dos/historical/Hanoi/{i}/Hanoi_PM2.5_{i}_YTD.csv')
+    #     rawdata.append(df)
+    # df = pd.concat(rawdata)
+    # df['Datetime']=pd.to_datetime(df['Date (LT)'])
+
+    newyork_df = pd.read_csv('new-york-air-quality.csv') # In individual particle AQI
+    hanoi_df = pd.read_csv('hanoi,-vietnam-air-quality.csv')
     # hcmc_df = pd.read_csv('/home/franklin/Downloads/ho-chi minh city us consulate, vietnam-air-quality.csv') looks like HCMC is currently offline
 
     newyork_df['city'] = "New York"
