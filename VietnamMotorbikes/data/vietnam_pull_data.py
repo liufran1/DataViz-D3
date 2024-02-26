@@ -22,6 +22,9 @@ def pull_geo_data():
     vietnam_gdf = gpd.read_file('provinces.geojson')
     boundary = gpd.GeoSeries(unary_union(vietnam_gdf['geometry']))
 
+    vietnam_district_population.crs = 'EPSG:4326'
+    boundary.crs = 'EPSG:4326'
+
 
     boundary.to_file('vietnam_boundary.geojson')
     vietnam_district_population[['Ten_Tinh','Ten_Huyen','geometry']].to_file('vietnam_districts.geojson')
