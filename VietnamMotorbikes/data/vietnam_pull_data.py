@@ -35,6 +35,8 @@ def format_vehicle_data():
     df['Total number of registered motorcycles'] = df['Total number of registered motorcycles'].astype('str').str.replace(',','').astype('float').astype('Int64')
     df['Total number of registered cars'] = df['Total number of registered cars'].astype('str').str.replace(',','').astype('float').astype('Int64')
     df['Population'] = df['Population'].astype('str').str.replace(',','').astype('float').astype('Int64')
+    df['Total number of registered motorcycles - ASEAN'] = df['Total number of registered motorcycles - ASEAN'].astype('str').str.replace(',','').astype('float').astype('Int64')
+
 
     df.to_csv('VietnamVehicles_1991-2022.csv',index=False)
 
