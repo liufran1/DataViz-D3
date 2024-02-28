@@ -1,58 +1,50 @@
 // let vietnamBorders = d3.json('../data/vietnam_boundary.geojson')
 // let vietnamDistricts = d3.json('../data/vietnam_districts.geojson')
+console.log("Map Script loaded");
+let svgHeight = 550;
+let svgWidth = 500;
+const svg = d3.select("#map1").append("svg");
 
-let svgHeight = 550
-let svgWidth = 500
-const svg = d3.select("#map1").append("svg")
-
-const projection = d3
-    .geoIdentity()
-    .reflectY(true)
-    // .fitWidth(svgWidth, vietnamBorders);
+const projection = d3.geoIdentity().reflectY(true);
+// .fitWidth(svgWidth, vietnamBorders);
 
 const pathGenerator = d3.geoPath(projection);
 
-const g = svg
-    .append("g")
+const g = svg.append("g");
 
-
-function drawBoundaries(groupElement, borderData){
-    let boundary = groupElement
+function drawBoundaries(groupElement, borderData) {
+  groupElement
     .selectAll("path")
     .data(borderData.features)
     .enter()
     .append("path")
-    .attr('opacity',0)
-    .transition()  
+    .attr("opacity", 0)
+    .transition()
     .duration(1000)
-    .attr('opacity',1)
+    .attr("opacity", 1)
     .attr("d", pathGenerator)
-    .attr("fill","#d1ae54")
-    .attr("id", 'introMapBorders')
+    .attr("fill", "#d1ae54")
+    .attr("id", "introMapBorders")
     .attr("stroke", "black")
-    .attr("stroke-width", 1)
+    .attr("stroke-width", 1);
 }
-  
 
 function drawPopulation(groupElement, districtData) {
-    groupElement
+  groupElement
     .selectAll("path")
     .data(districtData.features)
     .enter()
     .append("path")
-    .attr('opacity',0)
+    .attr("opacity", 0)
     .attr("d", pathGenerator)
-    .attr("fill","blue")
-    .attr("id", 'mapPopulationDist')
+    .attr("fill", "blue")
+    .attr("id", "mapPopulationDist")
     .attr("stroke", "black")
-    .attr("stroke-width", 0.5)
-    
-  }
+    .attr("stroke-width", 0.5);
+}
 
-d3.json('../data/vietnam_boundary.geojson', function (vietnamBorders) {
-    console.log(vietnamBorders)
-    drawBoundaries(g, vietnamBorders)
-})
-
-// drawPopulation(g, vietnamDistricts)
-
+d3.json("data/vietnam_boundary.geojson", function (vietnamBorders) {
+  console.log("File found");
+  console.log(vietnamBorders);
+  drawBoundaries(g, vietnamBorders);
+});
