@@ -1,18 +1,22 @@
 // let vietnamBorders = d3.json('../data/vietnam_boundary.geojson')
 // let vietnamDistricts = d3.json('../data/vietnam_districts.geojson')
 console.log("Map Script loaded");
-let svgHeight = 550;
+let svgHeight = 1000;
 let svgWidth = 500;
-const svg = d3.select("#map1").append("svg");
+const svg = d3
+  .select("#map1")
+  .append("svg")
+  .attr("height", svgHeight)
+  .attr("width", svgWidth);
 
-const projection = d3.geoIdentity().reflectY(true);
+// const projection = d3.geoIdentity().reflectY(true);
 // .fitWidth(svgWidth, vietnamBorders);
 
-const pathGenerator = d3.geoPath(projection);
+// const pathGenerator = d3.geoPath(projection);
 
 const g = svg.append("g");
 
-function drawBoundaries(groupElement, borderData) {
+function drawBoundaries(groupElement, pathGenerator, borderData) {
   groupElement
     .selectAll("path")
     .data(borderData.features)
@@ -29,13 +33,13 @@ function drawBoundaries(groupElement, borderData) {
     .attr("stroke-width", 1);
 }
 
-function drawPopulation(groupElement, districtData) {
+function drawPopulation(groupElement, pathGenerator, districtData) {
   groupElement
     .selectAll("path")
     .data(districtData.features)
     .enter()
     .append("path")
-    .attr("opacity", 0)
+    .attr("opacity", 0.5)
     .attr("d", pathGenerator)
     .attr("fill", "blue")
     .attr("id", "mapPopulationDist")
@@ -43,8 +47,18 @@ function drawPopulation(groupElement, districtData) {
     .attr("stroke-width", 0.5);
 }
 
-d3.json("data/vietnam_boundary.geojson", function (vietnamBorders) {
-  console.log("File found");
-  console.log(vietnamBorders);
-  drawBoundaries(g, vietnamBorders);
+d3.json("data/vietnam_boundary.geojson").then(function (vietnamBorders) {
+  const projection = d3
+    .geoIdentity()
+    .reflectY(true)
+    .fitWidth(svgWidth, vietnamBorders);
+
+  const mapPathGenerator = d3.geoPath(projection);
+  drawBoundaries(g, mapPathGenerator, vietnamBorders);
+
+  d3.json("data/vietnam_districts.geojson").then(function (vietnamDistricts) {
+    console.log("Districts file found");
+
+    drawPopulation(g, mapPathGenerator, vietnamDistricts);
+  });
 });
