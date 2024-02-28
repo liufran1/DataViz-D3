@@ -154,3 +154,27 @@ def format_air_quality_data():
                       (out_df['date'] < pd.to_datetime('2024/01/01').date()) &
                       (out_df['city'].isin(['New York', 'Hanoi']))
                      ].sort_values(['date','city']).to_csv('VietnamVsNYCpmpollution_2023.csv',index=False)
+
+def format_fleet_data():
+    motorbikes_df = pd.read_csv('VietnamVehicles_1991-2022.csv')
+    sales_df = pd.read_csv('Vietnam Motorbike Sales.csv')
+    sales_df['cumsum_sales_2007'] = sales_df['Sales'].loc[sales_df['Year'] >= 2007].cumsum()
+    sales_df['cumsum_sales_2017'] = sales_df['Sales'].loc[sales_df['Year'] >= 2017].cumsum()
+    sales_df['cumsum_sales_ebikes'] = sales_df['Electric'].cumsum()
+    sales_df.loc[sales_df['Year'] >= 2017, 'cumsum_sales_2007'] = sales_df.loc[sales_df['Year'] == 2016, 'cumsum_sales_2007'].iloc[0]
+    motorbikes_df = pd.merge(motorbikes_df,
+         sales_df,
+         on='Year',
+         how='left'
+         )
+    motorbikes_df['pre_2007_motorbikes'] = motorbikes_df['Total number of registered motorcycles - ASEAN'].fillna(0)-motorbikes_df['cumsum_sales_2007'].fillna(0)-motorbikes_df['cumsum_sales_2017'].fillna(0)-motorbikes_df['cumsum_sales_ebikes'].fillna(0)
+    motorbikes_df_long = motorbikes_df.melt(id_vars=['Year'],
+        value_vars=['pre_2007_motorbikes', 'cumsum_sales_2007', 'cumsum_sales_2017', 'cumsum_sales_ebikes'],
+        var_name='category',
+        value_name='count')
+    
+    motorbikes_df_long["category"] = pd.Categorical(
+        motorbikes_df_long["category"],
+        categories=["cumsum_sales_ebikes", "cumsum_sales_2017", "cumsum_sales_2007", "pre_2007_motorbikes"],
+        ordered=True,
+    )
