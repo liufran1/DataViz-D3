@@ -1,33 +1,13 @@
 let carbonData = d3.csv(
   "https://raw.githubusercontent.com/liufran1/DataViz-D3/master/VietnamMotorbikes/data/VietnamCO2_1991-2022.csv",
   d3.autoType,
-);
-
-// let svgHeight = 500;
-// let svgWidth = 500;
+); // TO DO - load this data in properly
 
 let svgLine = d3
   .select("#line1")
   .append("svg")
-  .attr("height", 500)
+  .attr("height", 600) // TO DO - Make adaptive
   .attr("width", 500);
-
-// let xScale = d3
-//   .scaleLinear()
-//   .domain(d3.extent(vehicleData, (d) => d["Year"]))
-//   .range([0, svgWidth]);
-// let yScale1 = d3
-//   .scaleLinear()
-//   .domain([0, d3.max(vehicleData, (d) => d["Population"])])
-//   .range([svgHeight, 0]);
-// let yScale2 = d3
-//   .scaleLinear()
-//   .domain([0, d3.max(gdpData, (d) => d["GDPperCapita"])])
-//   .range([svgHeight, 0]);
-// let yScale3 = d3
-//   .scaleLinear()
-//   .domain([0, d3.max(carbonData, (d) => d["CO2_emissions"])])
-//   .range([svgHeight, 0]);
 
 let groupLine = svgLine.append("g");
 
@@ -38,6 +18,7 @@ function drawLineChart(
   yScale,
   xVariable,
   yVariable,
+  color,
   elementID,
 ) {
   let graph = groupElement
@@ -50,7 +31,7 @@ function drawLineChart(
         .x((d) => xScale(d[xVariable]))
         .y((d) => yScale(d[yVariable])),
     )
-    .attr("stroke", "black")
+    .attr("stroke", color)
     .attr("stroke-width", 0.5)
     .attr("fill", "none")
     .attr("id", elementID);
@@ -84,6 +65,7 @@ d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
       yScale1,
       "Year",
       "Population",
+      "blue",
       "populationLine",
     );
 
@@ -94,6 +76,7 @@ d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
       yScale1,
       "Year",
       "Total number of registered motorcycles",
+      "red",
       "motorcycleLine",
     );
 
@@ -111,6 +94,7 @@ d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
           yScale2,
           "Year",
           "GDPperCapita",
+          "green",
           "gdpLine",
         );
       },

@@ -1,7 +1,7 @@
 // let vietnamBorders = d3.json('../data/vietnam_boundary.geojson')
 // let vietnamDistricts = d3.json('../data/vietnam_districts.geojson')
 console.log("Map Script loaded");
-let svgHeight = 1000;
+let svgHeight = 600;
 let svgWidth = 500;
 const svg = d3
   .select("#map1")
