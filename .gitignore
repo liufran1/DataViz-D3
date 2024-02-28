@@ -105,3 +105,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# replit
+.replit
+replit.nix
+poetry.lock
+pyproject.toml
+
+# node
+node_modules/
