@@ -40,5 +40,19 @@ d3.csv("data/VietnamVsNYCpmpollution_2023.csv", d3.autoType).then(
       "orange",
       "nycPMline",
     );
+
+    groupPM25
+      .append("rect")
+      .attr("y", yScale(50))
+      .attr("height", yScale(50))
+      .attr("fill", "grey")
+      .attr("opacity", 0.3)
+      .attr("stroke", "black")
+      .attr("stroke-width", 0.3)
+      .attr("x", 0)
+      .attr("width", 0) // Initial width of 0 for animation
+      .transition()
+      .duration(2500) // Duration of the animation
+      .attr("width", svgWidth);
   },
 );
