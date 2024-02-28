@@ -64,6 +64,9 @@ def format_carbon_breakdown_data():
     out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year'])
     out_df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
 
+    out_df = pd.melt(df.loc[df['Code']=='USA'], id_vars=['Entity', 'Code', 'Year'])
+    out_df.loc[df['Code']=='USA'].to_csv('USACarbonSources_1990-2020.csv', index=False)
+
 def format_health_data(): 
     df = pd.read_csv('number-of-deaths-by-risk-factor.csv') # https://ourworldindata.org/outdoor-air-pollution
     out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year']).replace('Deaths that are from all causes attributed to ','', regex=True).replace(', in both sexes aged all ages', '', regex=True)
