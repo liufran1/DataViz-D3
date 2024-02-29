@@ -192,6 +192,8 @@ def format_exposure_deaths_map():
     exposure_income_df = pd.merge(exposure_df, income_groups_df, how='left')
     income_exposure_gdf = pd.merge(world_gdf, exposure_income_df, how='right')
 
+    income_exposure_gdf.rename(columns={'Share of total deaths that are from all causes attributed to ambient particulate matter pollution, in both sexes aged age-standardized': 'percentAirPollutionDeaths'}, inplace=True)
+    
     (income_exposure_gdf
         .loc[(income_exposure_gdf['Income group'].str.contains('middle')) & (income_exposure_gdf['Year']==2019)]
         .to_file('middle_income_exposure_deaths.geojson'))
