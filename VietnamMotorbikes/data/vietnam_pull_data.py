@@ -124,7 +124,7 @@ def format_particulate_data():
     pm_df = pd.melt(pm_df, id_vars=['Pollutant', 'Source']) # Pollution measured in millions kg
     pm_df.rename(columns={'variable':'Year'},inplace=True)
     pm_df['Year'] = pm_df['Year'].astype('int')
-    pm_df.to_csv('HCMC_PMpollution.csv')
+    pm_df.to_csv('HCMC_PMpollution.csv', index=False)
 
 def format_air_quality_data():
     # rawdata = []
@@ -172,9 +172,26 @@ def format_fleet_data():
         value_vars=['pre_2007_motorbikes', 'cumsum_sales_2007', 'cumsum_sales_2017', 'cumsum_sales_ebikes'],
         var_name='category',
         value_name='count')
-    
+
     motorbikes_df_long["category"] = pd.Categorical(
         motorbikes_df_long["category"],
         categories=["cumsum_sales_ebikes", "cumsum_sales_2017", "cumsum_sales_2007", "pre_2007_motorbikes"],
         ordered=True,
     )
+
+
+def format_exposure_deaths_map():
+    exposure_df = pd.read_csv('share-deaths-outdoor-pollution.csv')
+    income_groups_df = pd.read_csv('world_bank_income_groups.csv')
+    world_gdf = gpd.read_file('https://github.com/datasets/geo-countries/raw/master/data/countries.geojson')
+    
+    world_gdf.rename(columns={"ADMIN":"Entity", "ISO_A3":"Code"}, inplace=True)
+    income_groups_df.rename(columns={"Economy":"Entity"}, inplace=True)
+    exposure_income_df['Income group'] = exposure_income_df['Income group'].fillna('')
+
+    exposure_income_df = pd.merge(exposure_df, income_groups_df, how='left')
+    income_exposure_gdf = pd.merge(world_gdf, exposure_income_df, how='right')
+
+    (income_exposure_gdf
+        .loc[(income_exposure_gdf['Income group'].str.contains('middle')) & (income_exposure_gdf['Year']==2019)]
+        .to_file('middle_income_exposure_deaths.geojson'))

@@ -51,6 +51,8 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 TTQ Nguyen, W Takeuchi, P Misra, S Hayashida
 Atmospheric Chemistry and Physics, 2021 acp.copernicus.org](https://acp.copernicus.org/articles/21/2795/2021/acp-21-2795-2021.pdf)
 
+* Share of deaths due to outdoor air pollution: [Our World in Data](https://ourworldindata.org/grapher/share-deaths-outdoor-pollution)
+
 ## Air quality data:
 * Historical PM 2.5 concentrations: [World Air Quality Historical Database](https://aqicn.org/historical/)
 <!-- * Historical AQI: [US Department of State](https://www.airnow.gov/international/us-embassies-and-consulates/#Vietnam$Hanoi) -->
