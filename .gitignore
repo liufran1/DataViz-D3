@@ -115,7 +115,6 @@ package-lock.json
 package.json
 # replit temp - remove from gitignore once the placeholder files are removed or updated
 script.js
-style.css
 vite.config.js
 
 # node

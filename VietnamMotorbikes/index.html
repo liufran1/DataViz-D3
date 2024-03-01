@@ -1,120 +1,143 @@
 <html>
   <head>
-    <!-- <link rel="stylesheet" href="sample.css"> -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="scroll.js"></script>
 
   <body>
-    <a id="start"></a>
-    <header>
-      <h1>Motorbikes in Vietnam</h1>
-    </header>
-    <div id="paragraph1">
-      One of the first things I noticed when traveling around Vietnam and
-      Southeast Asia broadly is that people love their motorbikes
-    </div>
-    <img src="images/PXL_20240116_091229577.MP.jpg" />
+    <main>
+      <div>
+        <section id="intro">
+          <header>
+            <h1>Motorbikes in Vietnam</h1>
+          </header>
+          <div id="paragraph1">
+            One of the first things I noticed when traveling around Vietnam and
+            Southeast Asia broadly is that people love their motorbikes
+          </div>
+          <img src="images/PXL_20240116_091229577.MP.jpg" />
 
-    <div id="map1">
-      <script src="./viz/vietnam_map_viz.js"></script>
-    </div>
-    <div id="paragraph2">
-      With a population of nearly 100M people and growing, I wanted to
-      understand what is the impact of all these motorbikes on the environment,
-      society, and how will this change in the coming years as Vietnam becomes
-      richer and our planet gets hotter?
-    </div>
+          <div id="map1">
+            <script src="./viz/vietnam_map_viz.js"></script>
+          </div>
+          <div id="paragraph2">
+            With a population of nearly 100M people and growing, I wanted to
+            understand what is the impact of all these motorbikes on the
+            environment, society, and how will this change in the coming years
+            as Vietnam becomes richer and our planet gets hotter?
+          </div>
+        </section>
 
-    <a id="macro_perspective"></a>
-    <div id="line1">
-      <script src="./viz/vietnam_macro_lines.js"></script>
-    </div>
-    <div id="macro_perspective_1">
-      Vietnam has experienced rapid population growth and economic development
-      through the end of the 20th century and into the 21st
-    </div>
-    <div id="macro_perspective_2">
-      It has gone from 70 million people to 100 million in just the last 30
-      years
-    </div>
-    <div id="macro_perspective_3">
-      The country has experienced exponential economic growth, and consequently
-      carbon emissions have come along for the ride
-    </div>
-    <div id="macro_perspective_4">
-      As the population and economy has grown, so has motorbike ownership
-    </div>
-    <div id="macro_perspective_5">
-      What has been the impact of all these motorbikes on carbon emissions and
-      air pollution?
-    </div>
+        <section id="macroeconomy">
+          <div id="line1">
+            <script src="./viz/vietnam_macro_lines.js"></script>
+          </div>
+          <div id="macro_perspective_1">
+            Vietnam has experienced rapid population growth and economic
+            development through the end of the 20th century and into the 21st
+          </div>
+          <div id="macro_perspective_2">
+            It has gone from 70 million people to 100 million in just the last
+            30 years
+          </div>
+          <div id="macro_perspective_3">
+            The country has experienced exponential economic growth, and
+            consequently carbon emissions have come along for the ride
+          </div>
+          <div id="macro_perspective_4">
+            As the population and economy has grown, so has motorbike ownership
+          </div>
+          <div id="macro_perspective_5">
+            What has been the impact of all these motorbikes on carbon emissions
+            and air pollution?
+          </div>
+        </section>
 
-    <a id="emissions"></a>
-    <div id="emissions_1">
-      Coming from the United States, where transportation is the second largest
-      source of carbon emissions, my initial instinct was to wonder how much
-      this visible traffic impacted Vietnam's environment
-    </div>
-    <div id="us_vietnam_compare">TO DO</div>
-    <div id="health_1">
-      If we look at the air quality in Hanoi in 2023, 306 days exceeded the WHO
-      recommended PM 2.5 Air Quality Index
-    </div>
-    <div id="pmline">
-      <script src="./viz/vietnam_air_quality.js"></script>
-    </div>
-    <div id="health_2">
-      Compared to New York City in the same period, the only times NYC got close
-      was during the Canadian wildfires in the summer
-    </div>
-    <div id="health_3">
-      We see the health impact of high pollution levels in the death statistics.
-      Air pollution is the third highest cause of death in Vietnam - footnote:
-      for an in-depth look at air pollution and its impact on human health, this
-      article goes into much more detail:
-      <href src="https://ourworldindata.org/outdoor-air-pollution">
-        Hannah Ritchie and Max Roser (2022) - “Outdoor Air Pollution”</href
-      >
-    </div>
-    <div id="health_bar_chart">
-      <script src="./viz/vietnam_death_causes.js"></script>
-    </div>
-    <div id="health_4">TO DO</div>
-    <div id="health_6">
-      The country is quickly urbanizing - can it improve its urban air quality
-      fast enough to keep up with its population streaming into its cities?
-    </div>
-    <div id="population_growth">
-      <script src="./viz/vietnam_population_growth.js"></script>
-    </div>
-    <a id="policy"></a>
-    <div id="regulations_1">
-      How has Vietnam responded? The Euro 2 equivalent emissions standard came
-      in force for motorbikes in 2007, and Euro 3 standard implemented in 2017.
-      However, as of 2024, while the Euro 5 guidelines apply to all new cars
-      sold since 2022 -
-      <href
-        src="http://vama.org.vn/en/roadmap-to-apply-euro-5-emission-standard-in-vietnam-vama-members-are-ready-5964.html"
-        >citation</href
-      >
-      motorbikes are still regulated under Euro 3 standards, with Euro 4 level
-      standards published but not mandatory. Neither the Euro 2 nor Euro 3
-      standard regulates particulate matter pollution
-    </div>
-    <div id="regulations_2"></div>
-    <div id="regulations_area">
-      <script src="./viz/vietnam_motorbike_sales.js"></script>
-    </div>
-    <div id="electrification_bar"></div>
-    <div id="regulations_3">
-      How will the adoption of cars impact this trajectory? As people get
-      wealthier, they tend to shift to cars and increase their carbon and
-      physical footprint
-    </div>
-    <div id="regulations_4"></div>
-    <div id="regulations_5"></div>
-    <div id="air_quality_map">
-      <script src="./viz/air_quality_map.js"></script>
-    </div>
+        <section id="air_quality">
+          <div id="emissions_1">
+            Coming from the United States, where transportation is the second
+            largest source of carbon emissions, my initial instinct was to
+            wonder how much this visible traffic impacted Vietnam's environment
+          </div>
+          <div id="us_vietnam_compare">TO DO</div>
+          <div id="health_1">
+            If we look at the air quality in Hanoi in 2023, 306 days exceeded
+            the WHO recommended PM 2.5 Air Quality Index
+          </div>
+          <div id="pmline">
+            <script src="./viz/vietnam_air_quality.js"></script>
+          </div>
+          <div id="health_2">
+            Compared to New York City in the same period, the only times NYC got
+            close was during the Canadian wildfires in the summer
+          </div>
+          <div id="health_3">
+            We see the health impact of high pollution levels in the death
+            statistics. Air pollution is the third highest cause of death in
+            Vietnam - footnote: for an in-depth look at air pollution and its
+            impact on human health, this article goes into much more detail:
+            <href src="https://ourworldindata.org/outdoor-air-pollution">
+              Hannah Ritchie and Max Roser (2022) - “Outdoor Air
+              Pollution”</href
+            >
+          </div>
+          <div id="health_bar_chart">
+            <script src="./viz/vietnam_death_causes.js"></script>
+          </div>
+          <div id="health_4">TO DO</div>
+          <div id="health_6">
+            The country is quickly urbanizing - can it improve its urban air
+            quality fast enough to keep up with its population streaming into
+            its cities?
+          </div>
+          <div id="population_growth">
+            <script src="./viz/vietnam_population_growth.js"></script>
+          </div>
+        </section>
+
+        <section id="outcomes">
+          <div id="regulations_1">
+            How has Vietnam responded? The Euro 2 equivalent emissions standard
+            came in force for motorbikes in 2007, and Euro 3 standard
+            implemented in 2017. However, as of 2024, while the Euro 5
+            guidelines apply to all new cars sold since 2022 -
+            <href
+              src="http://vama.org.vn/en/roadmap-to-apply-euro-5-emission-standard-in-vietnam-vama-members-are-ready-5964.html"
+              >citation</href
+            >
+            motorbikes are still regulated under Euro 3 standards, with Euro 4
+            level standards published but not mandatory. Neither the Euro 2 nor
+            Euro 3 standard regulates particulate matter pollution
+          </div>
+          <div id="regulations_2"></div>
+          <div id="regulations_area">
+            <script src="./viz/vietnam_motorbike_sales.js"></script>
+          </div>
+          <div id="electrification_bar"></div>
+          <div id="regulations_3">
+            How will the adoption of cars impact this trajectory? As people get
+            wealthier, they tend to shift to cars and increase their carbon and
+            physical footprint
+          </div>
+          <div id="regulations_4"></div>
+          <div id="regulations_5"></div>
+          <div id="air_quality_map">
+            <script src="./viz/air_quality_map.js"></script>
+          </div>
+        </section>
+
+        <section id="appendix">
+          <a id="data_sources"></a>
+        </section>
+      </div>
+      <nav class="section-nav">
+        <a href="#intro">1</a>
+        <a href="#macroeconomy">2</a>
+        <a href="#air_quality">3</a>
+        <a href="#outcomes">4</a>
+        <a href="#appendix">5</a>
+      </nav>
+    </main>
   </body>
 </html>
