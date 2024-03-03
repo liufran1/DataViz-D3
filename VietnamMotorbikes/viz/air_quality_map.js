@@ -11,7 +11,7 @@ d3.json("data/middle_income_exposure_deaths.geojson").then(
 
     const g = svg.append("g");
 
-    var colors = d3
+    var colors = d3 //TO DO - refine colors
       .scaleQuantize()
       .domain([0, 15])
       .range([
