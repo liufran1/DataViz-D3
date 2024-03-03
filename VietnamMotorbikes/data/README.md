@@ -12,6 +12,8 @@ Data on number of motorbikes and passenger cars had to be cobbled together from 
 * Sales - 2016 - 2020: [International Council on Clean Transportation](https://theicct.org/wp-content/uploads/2022/02/2w-vietnam-baseline-analysis-2019-and-2020.pdf)
 * Electric Sales 2019 - 2020: [International Council on Clean Transportation](https://theicct.org/wp-content/uploads/2022/02/2w-vietnam-baseline-analysis-2019-and-2020.pdf)
 
+* Pecent household ownership: [World Atlas](https://www.worldatlas.com/articles/countries-that-ride-motorbikes.html)
+
 ## Car data sources:
 * 1991 - 2004: [Nguyen, D. H. (2005). STUDY ON THE OWNERSHIP OF MOTORCYCLES AND A REGRESSION MODEL TO FORECAST VEHICLE NUMBERS IN VIETNAM. TSSV: Research Papers](https://www.academia.edu/7106120/STUDY_ON_THE_OWNERSHIP_OF_MOTORCYCLES_AND_A_REGRESSION_MODEL_TO_FORECAST_VEHICLE_NUMBERS_IN_VIETNAM) 
 
