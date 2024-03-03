@@ -202,5 +202,7 @@ def pull_motorbike_ownership():
     url = 'https://www.worldatlas.com/articles/countries-that-ride-motorbikes.html'
     tables = pd.read_html(url)
     df = tables[0]
+    df.columns = ['Rank', 'Country', 'HouseholdMotorbikeOwnership']
+    df['SEAsia'] = df['Country'].isin(['Thailand', 'Vietnam', 'Indonesia', 'Malaysia', 'Philippines'])
 
     df.to_csv('global_motorbike_ownership.csv', index=False)
