@@ -218,4 +218,5 @@ def format_vehicle_pollution_data():
     out_df['Pollutant_total'] = out_df['value']*out_df['km_per_day']*out_df['number_registered']
     out_df['Pollutant_percent'] = out_df['Pollutant_total'] / out_df.groupby('Pollutant - g per km per vehicle')['Pollutant_total'].transform('sum')
     out_df.rename(columns={'Pollutant - g per km per vehicle':'Pollutant', 'value':'g per km per vehicle'}, inplace=True)
+    out_df['Pollutant_percent'].fillna(0, inplace=True)
     out_df.to_csv('hcmc_vehicle_air_pollutants.csv', index=False)
