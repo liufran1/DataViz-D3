@@ -206,3 +206,16 @@ def pull_motorbike_ownership():
     df['SEAsia'] = df['Country'].isin(['Thailand', 'Vietnam', 'Indonesia', 'Malaysia', 'Philippines'])
 
     df.to_csv('global_motorbike_ownership.csv', index=False)
+
+def format_vehicle_pollution_data():
+    ef_df = pd.read_csv('Vietnam Transit Emission Factors - Sheet1.csv') # https://acp.copernicus.org/articles/21/2795/2021/acp-21-2795-2021.pdf
+    util_df = pd.read_csv('Vietnam Vehicle Utilization - Sheet1.csv')
+    ef_df['Taxi'] = ef_df['Car_and_taxi']
+    ef_df.rename(columns={'MC':'Motorcycle', 'Car_and_taxi':'Car'}, inplace=True)
+    out_df = pd.merge(pd.melt(ef_df, id_vars=['Pollutant - g per km per vehicle']).rename(columns={'variable':'Vehicle_Type'}),
+         util_df
+        )
+    out_df['Pollutant_total'] = out_df['value']*out_df['km_per_day']*out_df['number_registered']
+    out_df['Pollutant_percent'] = out_df['Pollutant_total'] / out_df.groupby('Pollutant - g per km per vehicle')['Pollutant_total'].transform('sum')
+    out_df.rename(columns={'Pollutant - g per km per vehicle':'Pollutant', 'value':'g per km per vehicle'}, inplace=True)
+    out_df.to_csv('hcmc_vehicle_air_pollutants.csv', index=False)
