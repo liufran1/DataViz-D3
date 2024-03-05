@@ -2,7 +2,7 @@ d3.json("data/middle_income_exposure_deaths.geojson").then(
   function (middle_income_exposure_deaths) {
     console.log("Map Script loaded");
     let svgHeight = 600;
-    let svgWidth = 500;
+    let svgWidth = 700;
     const svg = d3
       .select("#air_quality_map")
       .append("svg")
