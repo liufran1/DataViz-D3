@@ -34,7 +34,7 @@ window.createGraphic = function (graphicSelector) {
       .data(borderData.features)
       .enter()
       .append("path")
-      .attr("opacity", 0.1) // TO-DO: Set to 0 after debugging
+      .attr("opacity", 0)
       .attr("d", mapPathGenerator)
       .attr("fill", "#d1ae54")
       .attr("id", "introMapBorders")
@@ -45,7 +45,7 @@ window.createGraphic = function (graphicSelector) {
       .data(districtData.features)
       .enter()
       .append("path")
-      .attr("opacity", 0.1) // TO-DO: Set to 0 after debugging
+      .attr("opacity", 0)
       .attr("d", mapPathGenerator)
       .attr("fill", "blue")
       .attr("class", "map1_population_circles")
@@ -62,14 +62,27 @@ window.createGraphic = function (graphicSelector) {
       graphicVisEl
         .select("#introMapBorders")
         .transition()
-        .duration(3000)
-        .attr("opacity", 1);
-    },
-    function step1() {
+        .duration(300)
+        .attr("opacity", 0);
+
       graphicVisEl
         .selectAll(".map1_population_circles")
         .transition()
-        .duration(3000)
+        .duration(300)
+        .attr("opacity", 0);
+    },
+    function step1() {
+      graphicVisEl
+        .select("#introMapBorders")
+        .transition()
+        .duration(1000)
+        .attr("opacity", 1);
+    },
+    function step2() {
+      graphicVisEl
+        .selectAll(".map1_population_circles")
+        .transition()
+        .duration(1000)
         .attr("opacity", 1);
     },
   ];
