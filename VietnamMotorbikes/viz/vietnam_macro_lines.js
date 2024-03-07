@@ -4,7 +4,7 @@ let carbonData = d3.csv(
 ); // TO DO - load this data in properly
 
 let svgLine = d3
-  .select("#line1")
+  .select("#macro_lines")
   .append("svg")
   .attr("height", 600) // TO DO - Make adaptive
   .attr("width", 500);

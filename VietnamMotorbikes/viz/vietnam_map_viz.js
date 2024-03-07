@@ -1,64 +1,79 @@
-// let vietnamBorders = d3.json('../data/vietnam_boundary.geojson')
-// let vietnamDistricts = d3.json('../data/vietnam_districts.geojson')
 console.log("Map Script loaded");
+// TO DO - update this to be responsive, and independent for each viz
 let svgHeight = 600;
 let svgWidth = 500;
-const svg = d3
-  .select("#map1")
-  .append("svg")
-  .attr("height", svgHeight)
-  .attr("width", svgWidth);
 
-// const projection = d3.geoIdentity().reflectY(true);
-// .fitWidth(svgWidth, vietnamBorders);
+window.createGraphic = function (graphicSelector) {
+  var graphicEl = d3.select(".graphic");
+  var graphicVisEl = graphicEl.select(".graphic__vis");
+  var graphicProseEl = graphicEl.select(".graphic__prose");
 
-// const pathGenerator = d3.geoPath(projection);
-
-const g = svg.append("g");
-
-function drawBoundaries(groupElement, pathGenerator, borderData) {
-  groupElement
-    .selectAll("path")
-    .data(borderData.features)
-    .enter()
-    .append("path")
-    .attr("opacity", 0)
-    .transition()
-    .duration(1000)
-    .attr("opacity", 1)
-    .attr("d", pathGenerator)
-    .attr("fill", "#d1ae54")
-    .attr("id", "introMapBorders")
-    .attr("stroke", "black")
-    .attr("stroke-width", 1);
-}
-
-function drawPopulation(groupElement, pathGenerator, districtData) {
-  groupElement
-    .selectAll("path")
-    .data(districtData.features)
-    .enter()
-    .append("path")
-    .attr("opacity", 0.5)
-    .attr("d", pathGenerator)
-    .attr("fill", "blue")
-    .attr("id", "mapPopulationDist")
-    .attr("stroke", "black")
-    .attr("stroke-width", 0.5);
-}
-
-d3.json("data/vietnam_boundary.geojson").then(function (vietnamBorders) {
-  const projection = d3
-    .geoIdentity()
-    .reflectY(true)
-    .fitWidth(svgWidth, vietnamBorders);
-
-  const mapPathGenerator = d3.geoPath(projection);
-  drawBoundaries(g, mapPathGenerator, vietnamBorders);
-
-  d3.json("data/vietnam_districts.geojson").then(function (vietnamDistricts) {
-    console.log("Districts file found");
-
-    drawPopulation(g, mapPathGenerator, vietnamDistricts);
+  d3.json("data/vietnam_boundary.geojson").then(function (vietnamBorders) {
+    d3.json("data/vietnam_districts.geojson").then(function (vietnamDistricts) {
+      initMap(vietnamDistricts, vietnamBorders, graphicVisEl);
+      setupProse(graphicProseEl);
+    });
   });
-});
+
+  function initMap(districtData, borderData, graphicVisEl) {
+    const svg = graphicVisEl
+      .append("svg")
+      .attr("height", svgHeight)
+      .attr("width", svgWidth);
+
+    const g = svg.append("g");
+
+    const projection = d3
+      .geoIdentity()
+      .reflectY(true)
+      .fitWidth(svgWidth, borderData);
+
+    const mapPathGenerator = d3.geoPath(projection);
+
+    g.selectAll("path")
+      .data(borderData.features)
+      .enter()
+      .append("path")
+      .attr("opacity", 0.1) // TO-DO: Set to 0 after debugging
+      .attr("d", mapPathGenerator)
+      .attr("fill", "#d1ae54")
+      .attr("id", "introMapBorders")
+      .attr("stroke", "black")
+      .attr("stroke-width", 1);
+
+    g.selectAll("path")
+      .data(districtData.features)
+      .enter()
+      .append("path")
+      .attr("opacity", 0.1) // TO-DO: Set to 0 after debugging
+      .attr("d", mapPathGenerator)
+      .attr("fill", "blue")
+      .attr("class", "map1_population_circles")
+      .attr("stroke", "black")
+      .attr("stroke-width", 0.5);
+  }
+
+  function update(step) {
+    steps[step].call();
+  }
+
+  var steps = [
+    function step0() {
+      graphicVisEl
+        .select("#introMapBorders")
+        .transition()
+        .duration(3000)
+        .attr("opacity", 1);
+    },
+    function step1() {
+      graphicVisEl
+        .selectAll(".map1_population_circles")
+        .transition()
+        .duration(3000)
+        .attr("opacity", 1);
+    },
+  ];
+  return {
+    update: update, // make the update function callable as var graphic = createGraphic(".graphic"); graphic.update
+  };
+};

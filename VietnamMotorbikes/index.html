@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="scroll.js"></script>
+  <script src="noframework.waypoints.min.js"></script>
 
   <body>
     <main>
@@ -12,55 +12,69 @@
           <header>
             <h1>Motorbikes in Vietnam</h1>
           </header>
-          <div id="paragraph1">
-            One of the first things I noticed when traveling around Vietnam and
-            Southeast Asia broadly is that motorbikes are absolutely everywhere
-          </div>
+
           <img src="images/PXL_20240116_091229577.MP.jpg" />
 
-          <div id="map1">
-            <!-- TO DO - Show HCMC and Hanoi population centers -->
-            <script src="./viz/vietnam_map_viz.js"></script>
-          </div>
-          <div id="paragraph2">
-            With a population of nearly 100M people and growing, I wanted to
-            understand what is the impact of all these motorbikes on the
-            environment, society, and how will this change in the coming years
-            as Vietnam becomes richer and our planet gets hotter?
+          <div id="map1" class="graphic">
+            <div class="graphic__prose">
+              <p class="trigger" data-step="0">
+                One of the first things I noticed when traveling around Vietnam
+                and Southeast Asia broadly is that motorbikes are absolutely
+                everywhere
+              </p>
+              <p class="trigger" data-step="1">
+                With a population of nearly 100M people and growing, I wanted to
+                understand what is the impact of all these motorbikes on the
+                environment, society, and how will this change in the coming
+                years as Vietnam becomes richer and our planet gets hotter?
+              </p>
+            </div>
+            <div class="graphic__vis">
+              <!-- TO DO - Show HCMC and Hanoi population centers -->
+              <script src="./viz/vietnam_map_viz.js"></script>
+            </div>
           </div>
         </section>
 
         <section id="macroeconomy">
-          <div id="line1">
-            <script src="./viz/vietnam_macro_lines.js"></script>
-          </div>
-          <div id="macro_perspective_1">
-            Vietnam has experienced rapid population growth and economic
-            development through the end of the 20th century and into the 21st,
-            going from 70 million people to 100 million in just the last 30
-            years
-          </div>
-          <!-- <div id="macro_perspective_2">
-          </div> -->
-          <div id="macro_perspective_3">
-            As the country has experienced exponential economic growth, it has
-            seen a corresponding growth in carbon emissions
-          </div>
-          <div id="macro_perspective_4">
-            As the population and economy has grown, so has motorbike ownership
+          <div id="macro_lines" class="graphic">
+            <!--TO DO - update this class -->
+            <p class="trigger" data-step="0">
+              Vietnam has experienced rapid population growth and economic
+              development through the end of the 20th century and into the 21st,
+              going from 70 million people to 100 million in just the last 30
+              years
+            </p>
+            <!-- <div id="macro_perspective_2">
+            </div> -->
+            <p class="trigger" data-step="1">
+              As the country has experienced exponential economic growth, it has
+              seen a corresponding growth in carbon emissions
+            </p>
+            <p class="trigger" data-step="2">
+              As the population and economy has grown, so has motorbike
+              ownership
+            </p>
+            <div class="graphic__vis">
+              <script src="./viz/vietnam_macro_lines.js"></script>
+            </div>
           </div>
 
-          <div id="motorbike_ownership_bar">
-            <script src="./viz/global_motorbike_ownership.js"></script>
-          </div>
-          <div id="macro_perspective_5">
-            Southeast Asia's motorbike ownership has now far surpassed the rest
-            of the world, with over 80% of households in owning a motorbike.
-            Vietnam is second only to Thailand.
-          </div>
-          <div id="macro_perspective_6">
-            What has been the impact of all these motorbikes on carbon emissions
-            and air pollution?
+          <div id="motorbike_ownership_bar" class="graphic">
+            <div class="graphic__vis">
+              <script src="./viz/global_motorbike_ownership.js"></script>
+            </div>
+            <div class="graphic__prose">
+              <p class="trigger" data-step="0">
+                Southeast Asia's motorbike ownership has now far surpassed the
+                rest of the world, with over 80% of households in owning a
+                motorbike. Vietnam is second only to Thailand.
+              </p>
+              <p class="trigger" data-step="2">
+                What has been the impact of all these motorbikes on carbon
+                emissions and air pollution?
+              </p>
+            </div>
           </div>
         </section>
 
@@ -197,4 +211,5 @@
       </nav>
     </main>
   </body>
+  <script src="scroll.js"></script>
 </html>
