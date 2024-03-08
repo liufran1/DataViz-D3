@@ -35,10 +35,6 @@ function selectionToArray(selection) {
   return result;
 }
 
-var graphicEl = document.querySelectorAll(".graphic");
-var graphicsArray = [createMap1Graphic];
-var graphic = graphicsArray[0].call();
-
 function waypoints(graphicEl, graphic) {
   // select elements
 
@@ -99,8 +95,15 @@ function waypoints(graphicEl, graphic) {
   });
 }
 
-waypoints(graphicEl[0], graphic);
+var graphicEl = document.querySelectorAll(".graphic");
+var graphicsArray = [createMap1Graphic, createMacroLinesGraphic];
+for (let i = 0; i < graphicEl.length; i++) {
+  waypoints(graphicEl[i], graphicsArray[i].call());
+}
 
+// waypoints(graphicEl[0], graphicsArray[0].call());
+
+// TO DO: this will have to be updated for the adaptive sizing
 function setupProse(graphicProseEl) {
   var height = window.innerHeight * 0.5;
   graphicProseEl.selectAll(".trigger").style("height", height + "px");

@@ -38,30 +38,36 @@
         </section>
 
         <section id="macroeconomy">
-          <div id="macro_lines" class="graphic">
+          <div id="macro_lines" class="graphic" style="padding-bottom: 2000px">
             <!--TO DO - update this class -->
-            <p class="trigger" data-step="0">
-              Vietnam has experienced rapid population growth and economic
-              development through the end of the 20th century and into the 21st,
-              going from 70 million people to 100 million in just the last 30
-              years
-            </p>
-            <!-- <div id="macro_perspective_2">
+            <div class="graphic__prose">
+              <p class="trigger" data-step="0"></p>
+              <p class="trigger" data-step="1" style="padding-bottom: 2000px">
+                Vietnam has experienced rapid population growth and economic
+                development through the end of the 20th century and into the
+                21st, going from 70 million people to 100 million in just the
+                last 30 years
+              </p>
+              <!-- <p
+                class="trigger"
+                data-step="2"
+                style="padding-bottom: 2000px"
+              ></p> -->
+              <!-- <div id="macro_perspective_2">
             </div> -->
-            <p class="trigger" data-step="1">
-              As the country has experienced exponential economic growth, it has
-              seen a corresponding growth in carbon emissions
-            </p>
-            <p class="trigger" data-step="2">
-              As the population and economy has grown, so has motorbike
-              ownership
-            </p>
+              <p class="trigger" data-step="2" style="padding-bottom: 2000px">
+                As the population and economy has grown, so has motorbike
+                ownership
+              </p>
+              <p class="trigger" data-step="3">And carbon emissions</p>
+            </div>
             <div class="graphic__vis">
               <script src="./viz/vietnam_macro_lines.js"></script>
             </div>
           </div>
 
-          <div id="motorbike_ownership_bar" class="graphic">
+          <div id="motorbike_ownership_bar">
+            <!-- class="graphic" -->
             <div class="graphic__vis">
               <script src="./viz/global_motorbike_ownership.js"></script>
             </div>
