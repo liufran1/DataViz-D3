@@ -1,7 +1,8 @@
 createMotorbikeBarsGraphic = function () {
   var graphicEl = d3.select("#motorbike_ownership_bar");
   var graphicVisEl = graphicEl.select(".graphic__vis");
-  var graphicProseEl = graphicEl.select(".graphic__prose");
+
+  // var globalParams = {};
 
   d3.csv(
     "https://raw.githubusercontent.com/liufran1/DataViz-D3/master/VietnamMotorbikes/data/global_motorbike_ownership.csv",
@@ -36,6 +37,8 @@ createMotorbikeBarsGraphic = function () {
       .scaleOrdinal()
       .domain(ownershipData.map((d) => d["SEAsia"]))
       .range(["#5E4FA2", "#3288BD"]);
+    // TO DO - update colors
+
     let g = svg.append("g");
     // Create bars
     g.selectAll(".barBackground")
@@ -73,6 +76,9 @@ createMotorbikeBarsGraphic = function () {
     const yAxis = d3.axisLeft(yScale);
     svg.append("g").attr("class", "y-axis").call(yAxis);
 
+    // globalParams["yScale"] = yScale;
+    // globalParams["colorScale"] = colorScale;
+
     d3.selectAll("#motorbikeOwnsBar")
       .transition()
       .ease(d3.easeSin)
@@ -90,6 +96,9 @@ createMotorbikeBarsGraphic = function () {
   var steps = [
     function step0() {
       // TO DO: data step: animate in bars, highlight SEAsia
+      // d3.selectAll("#motorbikeOwnsBar").attr("fill", (d) =>
+      //   globalParams["colorScale"].call(d["SEAsia"]),
+      // );
     },
     function step1() {
       // TO DO: data step: fade out everything but Vietnam

@@ -68,7 +68,7 @@
 
           <div id="motorbike_ownership_bar" class="graphic">
             <!-- class="graphic" -->
-            <div class="graphic__vis">
+            <div class="graphic__vis" style="margin-left: 0; z-index: 0">
               <script src="./viz/global_motorbike_ownership.js"></script>
             </div>
             <div class="graphic__prose">
@@ -78,7 +78,12 @@
                 rest of the world, with over 80% of households in owning a
                 motorbike
               </p>
-              <p class="trigger" data-step="1">
+              <p
+                class="trigger"
+                data-step="1"
+                style="background-color: #dbdbdb; z-index: 10"
+              >
+                <!-- TO DO: Update z index -->
                 <!-- TO DO: data step: fade out everything but Vietnam -->
                 Vietnam is second only to Thailand
               </p>
@@ -92,8 +97,12 @@
         </section>
 
         <section id="air_quality">
-          <div id="carbon_emissions">
-            <div>
+          <div id="carbon_emissions" class="graphic">
+            <div id="us_vietnam_compare" class="graphic__vis">
+              <!-- TO DO: Add in Vietnam half -->
+              <script src="./viz/us_vietnam_compare.js"></script>
+            </div>
+            <div class="graphic__prose">
               <p class="trigger" data-step="0">
                 In the United States, transportation is the second largest
                 source of carbon emissions.
@@ -104,17 +113,13 @@
                 and manufacturing dominate greenhouse gas production.
               </p>
             </div>
-            <div id="us_vietnam_compare">
-              <!-- TO DO: Add in Vietnam half -->
-              <script src="./viz/us_vietnam_compare.js"></script>
-            </div>
           </div>
 
-          <div id="particulate_composition">
-            <div id="vehicle_pie">
+          <div id="particulate_composition" class="graphic">
+            <div id="vehicle_pie" class="graphic__vis">
               <script src="./viz/vietnam_vehicle_pie.js"></script>
             </div>
-            <div>
+            <div class="graphic__prose">
               <!-- TO DO: Buttons -->
               <p class="trigger" data-step="0">
                 If we expand beyond just CO2 to look at air pollution broadly,
@@ -137,11 +142,11 @@
         </section>
 
         <section id="health">
-          <div id="health_impacts">
-            <div id="pmline">
+          <div id="health_impacts" class="graphic">
+            <div id="pmline" class="graphic__vis">
               <script src="./viz/vietnam_air_quality.js"></script>
             </div>
-            <div>
+            <div class="graphic__prose">
               <p class="trigger" data-step="0">
                 This pollution concentration has immediate health impacts
                 <!-- TO-DO: update text -->
@@ -159,8 +164,8 @@
             </div>
           </div>
 
-          <div id="death_statistics">
-            <div>
+          <div id="death_statistics" class="graphic">
+            <div class="graphic__prose">
               <p class="trigger" data-step="0">
                 We see the health consequences in the death statistics. Air
                 pollution is the third highest cause of death in Vietnam -
@@ -172,27 +177,33 @@
               </p>
               <!-- TO DO: add more commentary? -->
             </div>
-            <div id="health_bar_chart">
+            <div id="health_bar_chart" class="graphic__vis">
               <script src="./viz/vietnam_death_causes.js"></script>
             </div>
           </div>
 
-          <div id="health_6">
-            The country is quickly urbanizing - can it improve its urban air
-            quality fast enough to keep up with its population streaming into
-            its cities?
-          </div>
-          <div id="population_growth">
-            <script src="./viz/vietnam_population_growth.js"></script>
+          <div id="health_6" class="graphic">
+            <div class="graphic__prose">
+              <p class="trigger" data-step="0"></p>
+              <p class="trigger" data-step="1">
+                The country is quickly urbanizing - can it improve its urban air
+                quality fast enough to keep up with its population streaming
+                into its cities?
+              </p>
+            </div>
+            <div id="population_growth" class="graphic__vis">
+              <script src="./viz/vietnam_population_growth.js"></script>
+            </div>
           </div>
         </section>
 
         <section id="outcomes">
           <div id="regulations_1">
-            How has Vietnam responded? The Euro 2 equivalent emissions standard
-            came in force for motorbikes in 2007, and Euro 3 standard
-            implemented in 2017. However, as of 2024, while the Euro 5
-            guidelines apply to all new cars sold since 2022 -
+            <!-- How has Vietnam responded?  -->
+            The Euro 2 equivalent emissions standard came in force for
+            motorbikes in 2007, and Euro 3 standard implemented in 2017.
+            However, as of 2024, while the Euro 5 guidelines apply to all new
+            cars sold since 2022 -
             <href
               src="http://vama.org.vn/en/roadmap-to-apply-euro-5-emission-standard-in-vietnam-vama-members-are-ready-5964.html"
               >citation</href
