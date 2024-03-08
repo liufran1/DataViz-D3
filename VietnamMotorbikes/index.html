@@ -67,11 +67,17 @@
             </div>
             <div class="graphic__prose">
               <p class="trigger" data-step="0">
+                <!-- TO DO: data step: animate in bars, highlight SEAsia -->
                 Southeast Asia's motorbike ownership has now far surpassed the
                 rest of the world, with over 80% of households in owning a
-                motorbike. Vietnam is second only to Thailand.
+                motorbike
+              </p>
+              <p class="trigger" data-step="1">
+                <!-- TO DO: data step: fade out everything but Vietnam -->
+                Vietnam is second only to Thailand
               </p>
               <p class="trigger" data-step="2">
+                <!-- TO DO: this might not be a trigger - separate section div -->
                 What has been the impact of all these motorbikes on carbon
                 emissions and air pollution?
               </p>
@@ -80,70 +86,91 @@
         </section>
 
         <section id="air_quality">
-          <div id="emissions_1">
-            In the United States, transportation is the second largest source of
-            carbon emissions.
+          <div id="carbon_emissions">
+            <div>
+              <p class="trigger" data-step="0">
+                In the United States, transportation is the second largest
+                source of carbon emissions.
+              </p>
+              <p class="trigger" data-step="1">
+                Vietnam is a lower-middle income country going through rapid
+                industrialization, and it is at a stage where energy generation
+                and manufacturing dominate greenhouse gas production.
+              </p>
+            </div>
+            <div id="us_vietnam_compare">
+              <!-- TO DO: Add in Vietnam half -->
+              <script src="./viz/us_vietnam_compare.js"></script>
+            </div>
           </div>
-          <div id="us_vietnam_compare">
-            <!-- TO DO -->
-            <script src="./viz/us_vietnam_compare.js"></script>
-          </div>
-          <div id="emissions_2">
-            Vietnam is a lower-middle income country going through rapid
-            industrialization, and it is at a stage where energy generation and
-            manufacturing dominate greenhouse gas production.
-          </div>
-          <div id="emissions_3">
-            If we expand beyond just CO2 to look at air pollution broadly,
-            transportation still dominates, especially if we focus in on cities.
-            A 2020 study of Ho Chi Minh City attributed 95% of air pollution to
-            transportation sources, with trucks, cars, or motorbikes dominating
-            depending on which type of pollutant you looked at
-          </div>
-          <!-- TO DO: Buttons -->
-          <div id="vehicle_pie">
-            <script src="./viz/vietnam_vehicle_pie.js"></script>
-          </div>
-          <div id="emissions_4">
-            Motorcycles are responsible pollutants like methane, carbon
-            monoxide, and black carbon
-          </div>
-          <div id="emissions_5">
-            On the other hand, trucks are responsible for the balance of PM 2.5
-            particulate matter
+
+          <div id="particulate_composition">
+            <div id="vehicle_pie">
+              <script src="./viz/vietnam_vehicle_pie.js"></script>
+            </div>
+            <div>
+              <!-- TO DO: Buttons -->
+              <p class="trigger" data-step="0">
+                If we expand beyond just CO2 to look at air pollution broadly,
+                transportation still dominates, especially if we focus in on
+                cities. A 2020 study of Ho Chi Minh City attributed 95% of air
+                pollution to transportation sources, with trucks, cars, or
+                motorbikes dominating depending on which type of pollutant you
+                looked at
+              </p>
+              <p class="trigger" data-step="1">
+                Motorcycles are responsible pollutants like methane, carbon
+                monoxide, and black carbon
+              </p>
+              <p class="trigger" data-step="1">
+                On the other hand, trucks are responsible for the balance of PM
+                2.5 particulate matter
+              </p>
+            </div>
           </div>
         </section>
+
         <section id="health">
-          <div id="health_1">
-            This pollution concentration has immediate health impacts
+          <div id="health_impacts">
+            <div id="pmline">
+              <script src="./viz/vietnam_air_quality.js"></script>
+            </div>
+            <div>
+              <p class="trigger" data-step="0">
+                This pollution concentration has immediate health impacts
+                <!-- TO-DO: update text -->
+              </p>
+              <p class="trigger" data-step="1">
+                <!-- TO DO: data step 1 - animate in Hanoi, WHO level -->
+                If we look at the air quality in Hanoi in 2023, 306 days
+                exceeded the WHO recommended PM 2.5 Air Quality Index
+              </p>
+              <p class="trigger" data-step="2">
+                <!-- TO DO: data step 2 - animate in NYC -->
+                In comparison, New York City only got close to those levels
+                during the Canadian wildfires in the summer
+              </p>
+            </div>
           </div>
-          <div id="health_2">
-            If we look at the air quality in Hanoi in 2023, 306 days exceeded
-            the WHO recommended PM 2.5 Air Quality Index
+
+          <div id="death_statistics">
+            <div>
+              <p class="trigger" data-step="0">
+                We see the health consequences in the death statistics. Air
+                pollution is the third highest cause of death in Vietnam -
+                <!-- TO DO: move footnote to appendix. footnote: for an in-depth look at air pollution and its impact
+                on human health, this article goes into much more detail:
+                <href src="https://ourworldindata.org/outdoor-air-pollution">
+                  Hannah Ritchie and Max Roser (2022) - "Outdoor Air
+                  Pollution"</href> -->
+              </p>
+              <!-- TO DO: add more commentary? -->
+            </div>
+            <div id="health_bar_chart">
+              <script src="./viz/vietnam_death_causes.js"></script>
+            </div>
           </div>
-          <div id="pmline">
-            <script src="./viz/vietnam_air_quality.js"></script>
-          </div>
-          <div id="health_3">
-            Compared to New York City in the same period, the only times NYC got
-            close was during the Canadian wildfires in the summer
-          </div>
-          <div id="health_4">
-            We see the health consequences in the death statistics. Air
-            pollution is the third highest cause of death in Vietnam - footnote:
-            for an in-depth look at air pollution and its impact on human
-            health, this article goes into much more detail:
-            <href src="https://ourworldindata.org/outdoor-air-pollution">
-              Hannah Ritchie and Max Roser (2022) - "Outdoor Air
-              Pollution"</href
-            >
-          </div>
-          <div id="health_bar_chart">
-            <script src="./viz/vietnam_death_causes.js"></script>
-          </div>
-          <div id="health_5">
-            <!-- TO DO -->
-          </div>
+
           <div id="health_6">
             The country is quickly urbanizing - can it improve its urban air
             quality fast enough to keep up with its population streaming into

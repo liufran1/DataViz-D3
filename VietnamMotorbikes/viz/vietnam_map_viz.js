@@ -3,7 +3,7 @@ console.log("Map Script loaded");
 let svgHeight = 600;
 let svgWidth = 500;
 
-window.createGraphic = function (graphicSelector) {
+window.createMap1Graphic = function (graphicSelector) {
   var graphicEl = d3.select(".graphic");
   var graphicVisEl = graphicEl.select(".graphic__vis");
   var graphicProseEl = graphicEl.select(".graphic__prose");
