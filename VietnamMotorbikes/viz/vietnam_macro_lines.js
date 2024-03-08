@@ -101,52 +101,37 @@ createMacroLinesGraphic = function () {
         .select("#populationLine")
         .transition()
         .ease(d3.easeSin)
-        .duration(1000)
+        .duration(500)
         .attr("stroke-dashoffset", 0);
     },
     function step1() {
-      graphicVisEl
-        .select("#populationLine")
-        .transition()
-        .ease(d3.easeSin)
-        .duration(3000)
-        .attr("color", "grey");
+      graphicVisEl.select("#populationLine").attr("stroke", "grey");
 
       graphicVisEl
         .select("#gdpLine")
         .transition()
         .ease(d3.easeSin)
-        .duration(1000)
+        .duration(500)
         .attr("stroke-dashoffset", 0);
     },
     function step2() {
-      graphicVisEl
-        .select("#gdpLine")
-        .transition()
-        .ease(d3.easeSin)
-        .duration(3000)
-        .attr("color", "grey");
+      graphicVisEl.select("#gdpLine").attr("stroke", "grey");
 
       graphicVisEl
         .select("#motorcycleLine")
         .transition()
         .ease(d3.easeSin)
-        .duration(1000)
+        .duration(500)
         .attr("stroke-dashoffset", 0);
     },
     function step3() {
-      graphicVisEl
-        .select("#motorcycleLine")
-        .transition()
-        .ease(d3.easeSin)
-        .duration(3000)
-        .attr("color", "grey");
+      graphicVisEl.select("#motorcycleLine").attr("stroke", "grey");
 
       graphicVisEl
         .select("#co2Line")
         .transition()
         .ease(d3.easeSin)
-        .duration(1000)
+        .duration(500)
         .attr("stroke-dashoffset", 0);
     },
   ];
