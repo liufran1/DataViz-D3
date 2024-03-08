@@ -36,7 +36,8 @@ function selectionToArray(selection) {
 }
 
 var graphicEl = document.querySelectorAll(".graphic");
-var graphic = createMap1Graphic(".graphic");
+var graphicsArray = [createMap1Graphic];
+var graphic = graphicsArray[0].call();
 
 function waypoints(graphicEl, graphic) {
   // select elements
