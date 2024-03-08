@@ -4,7 +4,7 @@ let svgHeight = 600;
 let svgWidth = 500;
 
 createMap1Graphic = function () {
-  var graphicEl = d3.select(".graphic");
+  var graphicEl = d3.select("#map1");
   var graphicVisEl = graphicEl.select(".graphic__vis");
   var graphicProseEl = graphicEl.select(".graphic__prose");
 
