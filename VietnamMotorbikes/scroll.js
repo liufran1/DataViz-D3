@@ -97,11 +97,11 @@ function waypoints(graphicEl, graphic) {
 
 var graphicEl = document.querySelectorAll(".graphic");
 var graphicsArray = [createMap1Graphic, createMacroLinesGraphic];
+// Surely there's a better way to organize the section - function mapping
+
 for (let i = 0; i < graphicEl.length; i++) {
   waypoints(graphicEl[i], graphicsArray[i].call());
 }
-
-// waypoints(graphicEl[0], graphicsArray[0].call());
 
 // TO DO: this will have to be updated for the adaptive sizing
 function setupProse(graphicProseEl) {

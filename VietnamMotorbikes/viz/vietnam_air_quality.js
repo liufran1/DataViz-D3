@@ -42,6 +42,20 @@ d3.csv("data/VietnamVsNYCpmpollution_2023.csv", d3.autoType).then(
     );
 
     groupPM25
+      .selectAll("#hanoiPMline")
+      .transition()
+      .ease(d3.easeSin)
+      .duration(500)
+      .attr("stroke-dashoffset", 0);
+
+    groupPM25
+      .selectAll("#nycPMline")
+      .transition()
+      .ease(d3.easeSin)
+      .duration(500)
+      .attr("stroke-dashoffset", 0);
+
+    groupPM25
       .append("rect")
       .attr("y", yScale(50))
       .attr("height", yScale(50))
