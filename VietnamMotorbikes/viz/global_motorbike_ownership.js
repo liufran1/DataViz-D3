@@ -16,8 +16,7 @@ createMotorbikeBarsGraphic = function () {
     const width = 1000 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
-    const svg = d3
-      .select("#motorbike_ownership_bar")
+    const svg = graphicVisEl
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -61,14 +60,7 @@ createMotorbikeBarsGraphic = function () {
       .style("fill", (d) => colorScale(d["SEAsia"]))
       .attr("height", 0)
       .attr("y", (d) => yScale(0) - yScale(100))
-      .transition()
-      .ease(d3.easeSin)
-      .duration(3000)
-      .attr("y", (d) => yScale(d["HouseholdMotorbikeOwnership"]))
-      .attr(
-        "height",
-        (d) => yScale(0) - yScale(d["HouseholdMotorbikeOwnership"]),
-      );
+      .attr("id", "motorbikeOwnsBar");
 
     // // Add axes
     const xAxis = d3.axisBottom(xScale);
@@ -80,7 +72,31 @@ createMotorbikeBarsGraphic = function () {
 
     const yAxis = d3.axisLeft(yScale);
     svg.append("g").attr("class", "y-axis").call(yAxis);
+
+    d3.selectAll("#motorbikeOwnsBar")
+      .transition()
+      .ease(d3.easeSin)
+      .duration(3000)
+      .attr("y", (d) => yScale(d["HouseholdMotorbikeOwnership"]))
+      .attr(
+        "height",
+        (d) => yScale(0) - yScale(d["HouseholdMotorbikeOwnership"]),
+      );
   }
-  // return svg.node()
+  function update(step) {
+    steps[step].call();
+  }
+
+  var steps = [
+    function step0() {
+      // TO DO: data step: animate in bars, highlight SEAsia
+    },
+    function step1() {
+      // TO DO: data step: fade out everything but Vietnam
+    },
+    function step2() {},
+  ];
+  return {
+    update: update, // make the update function callable as var graphic = createGraphic(".graphic"); graphic.update
+  };
 };
-createMotorbikeBarsGraphic();

@@ -96,7 +96,11 @@ function waypoints(graphicEl, graphic) {
 }
 
 var graphicEl = document.querySelectorAll(".graphic");
-var graphicsArray = [createMap1Graphic, createMacroLinesGraphic];
+var graphicsArray = [
+  createMap1Graphic,
+  createMacroLinesGraphic,
+  createMotorbikeBarsGraphic,
+];
 // Surely there's a better way to organize the section - function mapping
 
 for (let i = 0; i < graphicEl.length; i++) {
