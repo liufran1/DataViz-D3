@@ -84,6 +84,6 @@ createPollutionLines = function () {
     function step2() {},
   ];
   return {
-    update: update, // make the update function callable as var graphic = createGraphic(".graphic"); graphic.update
+    update: update,
   };
 };

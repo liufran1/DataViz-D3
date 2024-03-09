@@ -88,7 +88,6 @@
                 style="background-color: #dbdbdb; z-index: 10"
               >
                 <!-- TO DO: Update z index -->
-                <!-- TO DO: data step: fade out everything but Vietnam -->
                 Vietnam is second only to Thailand
               </p>
               <p class="trigger" data-step="2">
@@ -103,7 +102,11 @@
         <section id="air_quality">
           <div id="carbon_emissions" class="graphic">
             <div style="padding-top: 50vh"></div>
-            <div id="us_vietnam_compare" class="graphic__vis">
+            <div
+              id="us_vietnam_compare"
+              class="graphic__vis"
+              style="margin-left: 0; z-index: 0"
+            >
               <!-- TO DO: Add in Vietnam half -->
               <script src="./viz/us_vietnam_compare.js"></script>
             </div>
