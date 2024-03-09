@@ -211,3 +211,20 @@ section {
   text-anchor: middle;
   alignment-baseline: middle;
 }
+
+button {
+  display: inline-block;
+  margin: 5%;
+  /*      height: 500px;*/
+  background-color: #333;
+  color: #f8f9fc;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #888;
+}
