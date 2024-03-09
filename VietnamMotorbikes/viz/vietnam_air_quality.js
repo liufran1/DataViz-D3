@@ -32,7 +32,7 @@ createPollutionLines = function () {
       groupPM25
         .append("text")
         .attr("x", width - 150)
-        .attr("y", yScale(30))
+        .attr("y", yScale(15))
         .attr("class", "who-level-title")
         .style("font-size", "15px")
         .attr("opacity", 0)
@@ -40,7 +40,7 @@ createPollutionLines = function () {
       groupPM25
         .append("text")
         .attr("x", width - 150)
-        .attr("y", yScale(20))
+        .attr("y", yScale(5))
         .attr("class", "who-level-title")
         .style("font-size", "15px")
         .attr("opacity", 0)
@@ -51,8 +51,8 @@ createPollutionLines = function () {
         .append("rect")
         // .attr("y", yScale(50))
         // .attr("height", yScale(50))
-        .attr("y", 0)
-        .attr("height", yScale(50))
+        .attr("y", margin.top)
+        .attr("height", yScale(50) - margin.top)
         .attr("fill", "grey")
         .attr("opacity", 0.3)
         .attr("opacity", 0)
@@ -112,7 +112,7 @@ createPollutionLines = function () {
       svgPM
         .append("g")
         .attr("class", "x-axis")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0, " + (height + margin.top) + ")")
         .call(xAxis);
 
       const yAxis = d3.axisLeft(yScale).ticks(4).tickFormat(d3.format(".2s"));
@@ -120,15 +120,12 @@ createPollutionLines = function () {
       svgPM
         .append("g")
         .attr("class", "y-axis")
-        .attr(
-          "transform",
-          "translate(" + margin.left + ", -" + margin.top + ")",
-        )
+        .attr("transform", "translate(" + margin.left + ", -" + 0 + ")")
         .call(yAxis);
       svgPM
         .append("text")
         .attr("x", margin.left + 10)
-        .attr("y", margin.top)
+        .attr("y", margin.top * 2)
         .style("font-size", "15px")
         .text("PM 2.5 individual AQI");
     },
