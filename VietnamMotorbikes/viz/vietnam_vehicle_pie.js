@@ -24,6 +24,7 @@ createPollutantPie = function () {
       .scaleOrdinal()
       .domain(pollutionBreakdown.map((d) => d["Vehicle_Type"]))
       .range(d3.schemeAccent);
+    // TO DO: update colors
 
     const svg = d3
       .select("#vehicle_pie")

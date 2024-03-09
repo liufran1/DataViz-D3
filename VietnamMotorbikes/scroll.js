@@ -38,7 +38,7 @@ function selectionToArray(selection) {
 function waypoints(graphicEl, graphic) {
   // select elements
 
-  console.log(graphicEl);
+  // console.log(graphicEl);
   var graphicVisEl = graphicEl.querySelector(".graphic__vis");
   var triggerEls = selectionToArray(graphicEl.querySelectorAll(".trigger"));
 

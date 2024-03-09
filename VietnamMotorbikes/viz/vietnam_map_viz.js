@@ -1,4 +1,4 @@
-console.log("Map Script loaded");
+// console.log("Map Script loaded");
 // TO DO - update this to be responsive, and independent for each viz
 let svgHeight = 600;
 let svgWidth = 500;
@@ -85,6 +85,7 @@ createMap1Graphic = function () {
         .duration(1000)
         .attr("opacity", 1);
     },
+    function step3() {},
   ];
   return {
     update: update, // make the update function callable as var graphic = createGraphic(".graphic"); graphic.update

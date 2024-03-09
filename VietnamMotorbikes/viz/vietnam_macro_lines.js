@@ -3,6 +3,13 @@ createMacroLinesGraphic = function () {
   var graphicVisEl = graphicEl.select(".graphic__vis");
   var graphicProseEl = graphicEl.select(".graphic__prose");
 
+  var lineColors = {
+    populationLine: "blue",
+    motorcycleLine: "red",
+    gdpLine: "orange",
+    co2Line: "green",
+  };
+
   d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
     function (vehicleData) {
       d3.csv("data/VietnamGDPpcap_1991-2022.csv", d3.autoType).then(
@@ -10,7 +17,6 @@ createMacroLinesGraphic = function () {
           d3.csv("data/VietnamCO2_1991-2022.csv", d3.autoType).then(
             function (carbonData) {
               initLines(vehicleData, gdpData, carbonData);
-              // setupProse(graphicProseEl);
             },
           );
         },
@@ -19,6 +25,12 @@ createMacroLinesGraphic = function () {
   );
 
   function initLines(vehicleData, gdpData, carbonData) {
+    const margin = { top: 20, right: 20, bottom: 30, left: 60 };
+    const width = 600 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+    let svgWidth = width + margin.left + margin.right;
+    let svgHeight = height + margin.top + margin.bottom;
+
     const svg = graphicVisEl
       .append("svg")
       .attr("height", svgHeight)
@@ -29,22 +41,22 @@ createMacroLinesGraphic = function () {
     let xScale = d3
       .scaleLinear()
       .domain(d3.extent(vehicleData, (d) => d["Year"]))
-      .range([0, svgWidth]);
+      .range([margin.left, width + margin.left]);
 
     let yScale1 = d3
       .scaleLinear()
       .domain([0, d3.max(vehicleData, (d) => d["Population"])])
-      .range([svgHeight, 0]);
+      .range([height, 0]);
 
     let yScale2 = d3
       .scaleLinear()
       .domain([0, d3.max(gdpData, (d) => d["GDPperCapita"])])
-      .range([svgHeight, 0]);
+      .range([height, 0]);
 
     let yScale3 = d3
       .scaleLinear()
       .domain([0, d3.max(carbonData, (d) => d["CO2_emissions"])])
-      .range([svgHeight, 0]);
+      .range([height, 0]);
 
     drawLineChart(
       vehicleData,
@@ -53,7 +65,7 @@ createMacroLinesGraphic = function () {
       yScale1,
       "Year",
       "Population",
-      "blue",
+      lineColors["populationLine"],
       "populationLine",
     );
 
@@ -64,7 +76,7 @@ createMacroLinesGraphic = function () {
       yScale1,
       "Year",
       "Total number of registered motorcycles",
-      "red",
+      lineColors["motorcycleLine"],
       "motorcycleLine",
     );
 
@@ -75,7 +87,7 @@ createMacroLinesGraphic = function () {
       yScale2,
       "Year",
       "GDPperCapita",
-      "orange",
+      lineColors["gdpLine"],
       "gdpLine",
     );
 
@@ -86,9 +98,96 @@ createMacroLinesGraphic = function () {
       yScale3,
       "Year",
       "CO2_emissions",
-      "green",
+      lineColors["gdpLine"],
       "co2Line",
     );
+    const xAxis = d3
+      .axisBottom(xScale)
+      .tickValues([1991, 2022])
+      .tickFormat(d3.format("d"));
+
+    svg
+      .append("g")
+      .attr("class", "x-axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + margin.left + ", 0)")
+      .call(d3.axisLeft(yScale1).ticks(4).tickFormat(d3.format(".2s")))
+      .attr("opacity", 0)
+      .attr("id", "populationLine-y-axis");
+
+    svg
+      .append("text")
+      .attr("x", margin.left + 10)
+      .attr("y", margin.top)
+      .attr("id", "populationLine-title")
+      .style("font-size", "15px")
+      .attr("opacity", 0)
+      .text("Population");
+
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + margin.left + ", 0)")
+      .call(d3.axisLeft(yScale1).ticks(4).tickFormat(d3.format(".2s")))
+      .attr("opacity", 0)
+      .attr("id", "motorcycleLine-y-axis");
+    svg
+      .append("text")
+      .attr("x", margin.left + 10)
+      .attr("y", margin.top)
+      .attr("id", "motorcycleLine-title")
+      .style("font-size", "15px")
+      .attr("opacity", 0)
+      .text("Number of Registered Motorbikes");
+
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + margin.left + ", 0)")
+      .call(d3.axisLeft(yScale2).ticks(4).tickFormat(d3.format(".1s")))
+      .attr("opacity", 0)
+      .attr("id", "gdpLine-y-axis");
+    svg
+      .append("text")
+      .attr("x", margin.left + 10)
+      .attr("y", margin.top)
+      .attr("id", "gdpLine-title")
+      .style("font-size", "15px")
+      .attr("opacity", 0)
+      .text("GDP per capita (2022 US$)");
+
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + margin.left + ", 0)")
+      .call(d3.axisLeft(yScale3).ticks(4).tickFormat(d3.format(".2s")))
+      .attr("opacity", 0)
+      .attr("id", "co2Line-y-axis");
+
+    svg
+      .append("text")
+      .attr("x", margin.left + 10)
+      .attr("y", margin.top)
+      .attr("id", "co2Line-title")
+      .style("font-size", "15px")
+      .attr("opacity", 0)
+      .text("Annual CO2 emissions (kilotons)");
+  }
+
+  function highlightLine(lineID) {
+    for (const [key, value] of Object.entries(lineColors)) {
+      graphicVisEl.select("#" + key).style("stroke", "grey");
+      graphicVisEl.select("#" + key + "-y-axis").attr("opacity", 0);
+      graphicVisEl.select("#" + key + "-title").attr("opacity", 0);
+    }
+    graphicVisEl.select("#" + lineID).style("stroke", lineColors[lineID]);
+    graphicVisEl.select("#" + lineID + "-y-axis").attr("opacity", 1);
+    graphicVisEl.select("#" + lineID + "-title").attr("opacity", 1);
   }
 
   function update(step) {
@@ -97,6 +196,7 @@ createMacroLinesGraphic = function () {
 
   var steps = [
     function step0() {
+      highlightLine("populationLine");
       graphicVisEl
         .select("#populationLine")
         .transition()
@@ -105,7 +205,7 @@ createMacroLinesGraphic = function () {
         .attr("stroke-dashoffset", 0);
     },
     function step1() {
-      graphicVisEl.select("#populationLine").attr("stroke", "grey");
+      highlightLine("gdpLine");
 
       graphicVisEl
         .select("#gdpLine")
@@ -115,7 +215,7 @@ createMacroLinesGraphic = function () {
         .attr("stroke-dashoffset", 0);
     },
     function step2() {
-      graphicVisEl.select("#gdpLine").attr("stroke", "grey");
+      highlightLine("motorcycleLine");
 
       graphicVisEl
         .select("#motorcycleLine")
@@ -125,7 +225,7 @@ createMacroLinesGraphic = function () {
         .attr("stroke-dashoffset", 0);
     },
     function step3() {
-      graphicVisEl.select("#motorcycleLine").attr("stroke", "grey");
+      highlightLine("co2Line");
 
       graphicVisEl
         .select("#co2Line")
@@ -140,7 +240,6 @@ createMacroLinesGraphic = function () {
     update: update,
   };
 };
-// createMacroLinesGraphic();
 
 function drawLineChart(
   dataset,

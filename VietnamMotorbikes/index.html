@@ -16,6 +16,11 @@
           <img src="images/PXL_20240116_091229577.MP.jpg" />
 
           <div id="map1" class="graphic">
+            <div class="graphic__vis">
+              <!-- TO DO - Show HCMC and Hanoi population centers -->
+              <script src="./viz/vietnam_map_viz.js"></script>
+            </div>
+            <!-- <div style="padding-top: 50vh"></div> -->
             <div class="graphic__prose">
               <p class="trigger" data-step="0"></p>
               <p class="trigger" data-step="1">
@@ -29,16 +34,14 @@
                 environment, society, and how will this change in the coming
                 years as Vietnam becomes richer and our planet gets hotter?
               </p>
-            </div>
-            <div class="graphic__vis">
-              <!-- TO DO - Show HCMC and Hanoi population centers -->
-              <script src="./viz/vietnam_map_viz.js"></script>
+              <!-- <p class="trigger" data-step="3"></p> -->
             </div>
           </div>
         </section>
 
         <section id="macroeconomy">
           <div id="macro_lines" class="graphic">
+            <!-- <div style="padding-top: 50vh"></div> -->
             <!--TO DO - update this class -->
             <div class="graphic__prose">
               <p class="trigger" data-step="0"></p>
@@ -64,19 +67,20 @@
             <div class="graphic__vis">
               <script src="./viz/vietnam_macro_lines.js"></script>
             </div>
+            <!-- footnote: before any pitchforks get taken out for using multiple axes on one chart https://observablehq.com/@tophtucker/dual-axes-are-a-great-way-to-show-correlation -->
           </div>
 
           <div id="motorbike_ownership_bar" class="graphic">
-            <!-- class="graphic" -->
+            <!-- <div style="padding-top: 50vh"></div> -->
             <div class="graphic__vis" style="margin-left: 0; z-index: 0">
               <script src="./viz/global_motorbike_ownership.js"></script>
             </div>
             <div class="graphic__prose">
               <p class="trigger" data-step="0">
                 <!-- TO DO: data step: animate in bars, highlight SEAsia -->
-                Southeast Asia's motorbike ownership has now far surpassed the
-                rest of the world, with over 80% of households in owning a
-                motorbike
+                <b style="color: #5e4fa2">Southeast Asia's</b> motorbike
+                ownership has now far surpassed the rest of the world, with over
+                80% of households in owning a motorbike
               </p>
               <p
                 class="trigger"
@@ -98,6 +102,7 @@
 
         <section id="air_quality">
           <div id="carbon_emissions" class="graphic">
+            <div style="padding-top: 50vh"></div>
             <div id="us_vietnam_compare" class="graphic__vis">
               <!-- TO DO: Add in Vietnam half -->
               <script src="./viz/us_vietnam_compare.js"></script>
@@ -116,6 +121,7 @@
           </div>
 
           <div id="particulate_composition" class="graphic">
+            <div style="padding-top: 50vh"></div>
             <div id="vehicle_pie" class="graphic__vis">
               <script src="./viz/vietnam_vehicle_pie.js"></script>
             </div>
@@ -143,6 +149,7 @@
 
         <section id="health">
           <div id="health_impacts" class="graphic">
+            <div style="padding-top: 50vh"></div>
             <div id="pmline" class="graphic__vis">
               <script src="./viz/vietnam_air_quality.js"></script>
             </div>
@@ -165,6 +172,7 @@
           </div>
 
           <div id="death_statistics" class="graphic">
+            <div style="padding-top: 50vh"></div>
             <div class="graphic__prose">
               <p class="trigger" data-step="0">
                 We see the health consequences in the death statistics. Air
@@ -183,6 +191,7 @@
           </div>
 
           <div id="health_6" class="graphic">
+            <div style="padding-top: 50vh"></div>
             <div class="graphic__prose">
               <p class="trigger" data-step="0"></p>
               <p class="trigger" data-step="1">
@@ -198,6 +207,7 @@
         </section>
 
         <section id="outcomes">
+          <div style="padding-top: 50vh"></div>
           <div id="regulations_1">
             <!-- How has Vietnam responded?  -->
             The Euro 2 equivalent emissions standard came in force for
