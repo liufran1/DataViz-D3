@@ -62,7 +62,7 @@ def format_carbon_data():
 def format_carbon_breakdown_data():
     df = pd.read_csv('ghg-emissions-by-sector.csv') # https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&time=latest&country=~VNM
     out_df = pd.melt(df.loc[df['Code']=='VNM'], id_vars=['Entity', 'Code', 'Year']).replace('Greenhouse gas emissions from ', '', regex=True).replace(' of greenhouse gases', '', regex=True)
-    out_df.loc[df['Code']=='VNM'].to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
+    out_df.to_csv('VietnamCarbonSources_1990-2020.csv', index=False)
 
     out_df = pd.melt(df.loc[df['Code']=='USA'], id_vars=['Entity', 'Code', 'Year'])
     out_df.to_csv('USACarbonSources_1990-2020.csv', index=False)
