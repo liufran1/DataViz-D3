@@ -31,8 +31,8 @@ createPollutantPie = function () {
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("viewBox", [-width / 2, -height / 2, width, height])
-      .attr("style", "max-width: 100%; height: auto;");
+      .attr("viewBox", [-width / 2, -height / 2, width, height]);
+    // .attr("style", "max-width: 100%; height: auto;");
 
     // TO DO: Turn this into an update function
     svg
