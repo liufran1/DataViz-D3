@@ -9,7 +9,7 @@ createPollutionMapGraphic = function () {
 
   const g = svg.append("g");
 
-  var colors = d3 //TO DO - refine colors
+  var colors = d3 //TO DO - refine colors - match vietnam to version at beginning
     .scaleQuantize()
     .domain([0, 15])
     // .range(d3.interpolateYlOrRd);
@@ -63,9 +63,9 @@ createPollutionMapGraphic = function () {
 
   var steps = [
     function step0() {
-      g.selectAll("path").attr("opacity", (d) =>
-        d.properties["Entity"] == "Vietnam" ? 1 : 0,
-      );
+      g.selectAll("path")
+        .attr("opacity", (d) => (d.properties["Entity"] == "Vietnam" ? 1 : 0))
+        .attr("stroke-width", 0.07);
       g.transition()
         .duration(500)
         .ease(d3.easeSin)
@@ -76,11 +76,12 @@ createPollutionMapGraphic = function () {
         .transition()
         .duration(500)
         .ease(d3.easeSin)
-        .attr("opacity", 1);
+        .attr("opacity", 1)
+        .attr("stroke-width", 0.5);
       g.transition()
         .duration(500)
         .ease(d3.easeSin)
-        .attr("transform", "translate(0, 0)scale(" + 1 + ")");
+        .attr("transform", "translate(-100, 0)scale(" + 1 + ")");
     },
   ];
 
