@@ -197,7 +197,7 @@ def format_exposure_deaths_map():
     middle_income = (income_exposure_gdf
         .loc[(income_exposure_gdf['Income group'].str.contains('middle')) & (income_exposure_gdf['Year']==2019)]
         )
-    pd.concat([world_gdf.loc[~world_gdf["Code"].isin(middle_income["Code"])],middle_income]).to_file('middle_income_exposure_deaths.geojson')
+    pd.concat([world_gdf.loc[~world_gdf["Code"].isin(middle_income["Code"])],middle_income]).to_file('middle_global_map.geojson')
 
 def pull_motorbike_ownership():
     url = 'https://www.worldatlas.com/articles/countries-that-ride-motorbikes.html'
