@@ -105,7 +105,8 @@ var graphicsArray = [
   createPollutionLines,
   createDeathBarGraphic,
   createPopulationChangeGraphic,
-  createPollutionMapGraphic
+  createSalesGraphic,
+  createPollutionMapGraphic,
 ];
 // Surely there's a better way to organize the section - function mapping
 
