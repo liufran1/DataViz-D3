@@ -186,6 +186,7 @@ def format_exposure_deaths_map():
     world_gdf = gpd.read_file('https://github.com/datasets/geo-countries/raw/master/data/countries.geojson')
     
     world_gdf.rename(columns={"ADMIN":"Entity", "ISO_A3":"Code"}, inplace=True)
+    world_gdf.replace('United Republic of Tanzania', 'Tanzania', inplace=True)
     income_groups_df.rename(columns={"Economy":"Entity"}, inplace=True)
 
     exposure_income_df = pd.merge(exposure_df, income_groups_df, how='left')
@@ -197,7 +198,8 @@ def format_exposure_deaths_map():
     middle_income = (income_exposure_gdf
         .loc[(income_exposure_gdf['Income group'].str.contains('middle')) & (income_exposure_gdf['Year']==2019)]
         )
-    pd.concat([world_gdf.loc[~world_gdf["Code"].isin(middle_income["Code"])],middle_income]).to_file('middle_global_map.geojson')
+    out_df = pd.concat([world_gdf.loc[~world_gdf["Code"].isin(middle_income["Code"])],middle_income])
+    out_df.to_file('middle_income_pollution_map.geojson')
 
 def pull_motorbike_ownership():
     url = 'https://www.worldatlas.com/articles/countries-that-ride-motorbikes.html'
