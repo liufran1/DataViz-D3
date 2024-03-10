@@ -49,12 +49,13 @@ createPollutionMapGraphic = function () {
         .attr("stroke", "black")
         .attr("stroke-width", 0.5);
 
-      // g.selectAll("path")
-      //   .data(countries.features)
-      //   .enter()
-      //   .append("path")
-      //   .attr("opacity", 0.1)
-      //   .attr("d", pathGenerator);
+      g.selectAll("path")
+        .attr("opacity", (d) => (d.properties["Entity"] == "Vietnam" ? 1 : 0))
+        .attr("stroke-width", 0.07);
+      g.transition().attr(
+        "transform",
+        "translate(-5500, -1200)scale(" + 7 + ")",
+      );
     },
   );
   function update(step) {
