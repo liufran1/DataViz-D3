@@ -187,16 +187,17 @@ def format_exposure_deaths_map():
     
     world_gdf.rename(columns={"ADMIN":"Entity", "ISO_A3":"Code"}, inplace=True)
     income_groups_df.rename(columns={"Economy":"Entity"}, inplace=True)
-    exposure_income_df['Income group'] = exposure_income_df['Income group'].fillna('')
 
     exposure_income_df = pd.merge(exposure_df, income_groups_df, how='left')
+    exposure_income_df['Income group'] = exposure_income_df['Income group'].fillna('')
     income_exposure_gdf = pd.merge(world_gdf, exposure_income_df, how='right')
 
     income_exposure_gdf.rename(columns={'Share of total deaths that are from all causes attributed to ambient particulate matter pollution, in both sexes aged age-standardized': 'percentAirPollutionDeaths'}, inplace=True)
     
-    (income_exposure_gdf
+    middle_income = (income_exposure_gdf
         .loc[(income_exposure_gdf['Income group'].str.contains('middle')) & (income_exposure_gdf['Year']==2019)]
-        .to_file('middle_income_exposure_deaths.geojson'))
+        )
+    pd.concat([world_gdf.loc[~world_gdf["Code"].isin(middle_income["Code"])],middle_income]).to_file('middle_income_exposure_deaths.geojson')
 
 def pull_motorbike_ownership():
     url = 'https://www.worldatlas.com/articles/countries-that-ride-motorbikes.html'
