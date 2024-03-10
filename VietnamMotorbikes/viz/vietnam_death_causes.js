@@ -1,4 +1,5 @@
 createDeathBarGraphic = function () {
+  var scales = {};
   d3.csv("./data/VietnamDeathCauses_1990-2019.csv", d3.autoType).then(
     function (deathData) {
       // Set up margins and dimensions
@@ -26,6 +27,8 @@ createDeathBarGraphic = function () {
         .domain([0, d3.max(filteredData, (d) => d.value)])
         .range([0, width]);
 
+      scales["xScale"] = xScale;
+
       const yScale = d3
         .scaleBand()
         .domain(filteredData.map((d) => d.variable))
@@ -52,7 +55,7 @@ createDeathBarGraphic = function () {
 
       // Create bars
       svg
-        .selectAll(".bar")
+        .selectAll(".DeathBar")
         .data(filteredData)
         .enter()
         .append("rect")
@@ -64,7 +67,10 @@ createDeathBarGraphic = function () {
         .attr("width", 0)
         .transition()
         .duration(3000)
-        .attr("width", (d) => xScale(d.value));
+        .attr("width", (d) => xScale(d.value))
+        .delay((d, i) => {
+          return i * 100;
+        });
 
       // Add axes
       const xAxis = d3.axisBottom(xScale);
@@ -82,7 +88,18 @@ createDeathBarGraphic = function () {
     steps[step].call();
   }
 
-  var steps = [function step0() {}, function step1() {}];
+  var steps = [
+    function step0() {
+      d3.selectAll(".DeathBar")
+        .transition()
+        .duration(1000)
+        .attr("width", (d) => scales["xScale"].call(d.value))
+        .delay((d, i) => {
+          return i * 100;
+        });
+    },
+    function step1() {},
+  ];
 
   return {
     update: update,
