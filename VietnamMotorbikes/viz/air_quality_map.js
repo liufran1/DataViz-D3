@@ -1,5 +1,4 @@
-// d3.json("data/countries.geojson").then(function (countries) {
-d3.json("data/middle_global_map.geojson").then(
+d3.json("data/middle_income_pollution_map.geojson").then(
   function (middle_income_exposure_deaths) {
     console.log("Map Script loaded");
     let svgHeight = 400;
@@ -56,4 +55,4 @@ d3.json("data/middle_global_map.geojson").then(
     //   .attr("d", pathGenerator);
   },
 );
-// });
+
