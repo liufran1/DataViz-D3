@@ -8,6 +8,8 @@ createMap1Graphic = function () {
   var graphicVisEl = graphicEl.select(".graphic__vis");
   var graphicProseEl = graphicEl.select(".graphic__prose");
 
+  var fillColor = "#FF6666"; // Light Orange-Red
+  // "#d1ae54"
   d3.json("data/vietnam_boundary.geojson").then(function (vietnamBorders) {
     d3.json("data/vietnam_districts.geojson").then(function (vietnamDistricts) {
       initMap(vietnamDistricts, vietnamBorders, graphicVisEl);
@@ -36,7 +38,7 @@ createMap1Graphic = function () {
       .append("path")
       .attr("opacity", 0)
       .attr("d", mapPathGenerator)
-      .attr("fill", "#d1ae54")
+      .attr("fill", fillColor)
       .attr("id", "introMapBorders")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
