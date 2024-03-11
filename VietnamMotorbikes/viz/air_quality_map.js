@@ -12,7 +12,7 @@ createPollutionMapGraphic = function () {
 
   let addLegend = function (svg, colorArray, legendHeight, svgHeight) {
     colorArray.forEach(function (color, i) {
-      console.log("Color: " + color + " index: " + i);
+      // console.log("Color: " + color + " index: " + i);
       svg
         .append("rect")
         .attr("fill", color)
@@ -59,7 +59,7 @@ createPollutionMapGraphic = function () {
 
   d3.json("data/middle_income_pollution_map.geojson").then(
     function (middle_income_exposure_deaths) {
-      console.log("Map Script loaded");
+      // console.log("Map Script loaded");
       addLegend(svg, colorRange, legendHeight, svgHeight);
 
       const projection = d3

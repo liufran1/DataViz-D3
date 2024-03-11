@@ -46,7 +46,6 @@ createCarbonCompareBars = function () {
             .range([margin.left + barWidth, margin.left]);
           carbonScales["USScale"] = xScale1;
           carbonScales["VNScale"] = xScale2;
-          console.log(carbonScales["USScale"](0));
 
           const yScale = d3
             .scaleBand()

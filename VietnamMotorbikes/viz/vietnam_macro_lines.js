@@ -266,9 +266,9 @@ function drawLineChart(
     .attr("fill", "none")
     .attr("id", elementID);
 
-  console.log(
-    "Node length for " + elementID + " : " + graph.node().getTotalLength(),
-  );
+  // console.log(
+  //   "Node length for " + elementID + " : " + graph.node().getTotalLength(),
+  // );
 
   graph
     .attr("stroke-dashoffset", graph.node().getTotalLength()) // Animation trick from https://medium.com/@louisemoxy/create-a-d3-line-chart-animation-336f1cb7dd61
