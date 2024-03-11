@@ -49,7 +49,7 @@ createMap1Graphic = function () {
       .append("path")
       .attr("opacity", 0)
       .attr("d", mapPathGenerator)
-      .attr("fill", "blue")
+      .attr("fill", population_color)
       .attr("class", "map1_population_circles")
       .attr("stroke", "black")
       .attr("stroke-width", 0.5);

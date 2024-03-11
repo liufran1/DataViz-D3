@@ -4,7 +4,7 @@ createMacroLinesGraphic = function () {
   var graphicProseEl = graphicEl.select(".graphic__prose");
 
   var lineColors = {
-    populationLine: "blue",
+    populationLine: population_color,
     motorcycleLine: "red",
     gdpLine: "orange",
     co2Line: "green",
