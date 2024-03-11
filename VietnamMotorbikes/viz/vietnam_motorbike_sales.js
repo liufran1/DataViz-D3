@@ -150,10 +150,8 @@ createSalesGraphic = function () {
             .style("font-weight", 800)
             .attr("id", "car-ownership-text")
             .attr("opacity", 0)
-            // .style("fill", color("cumsum_sales_2017"))
             .text("Cars");
-          //
-          // cumsum_sales_2017
+
           // Return the chart with the color scale as a property (for the legend).
           // return Object.assign(svg.node(), { scales: { color } });
         },
