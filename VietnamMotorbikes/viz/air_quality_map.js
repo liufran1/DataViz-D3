@@ -44,9 +44,15 @@ createPollutionMapGraphic = function () {
         .append("path")
         .attr("opacity", 1)
         .attr("d", pathGenerator)
-        .attr("fill", (d) => colors(d.properties["percentAirPollutionDeaths"]))
+        .attr("fill", (d) =>
+          d.properties["percentAirPollutionDeaths"] == null
+            ? "grey"
+            : colors(d.properties["percentAirPollutionDeaths"]),
+        )
         // .attr("id", "mapPopulationDist")
-        .attr("stroke", "black")
+        .attr("stroke", (d) =>
+          d.properties["percentAirPollutionDeaths"] == null ? "grey" : "black",
+        )
         .attr("stroke-width", 0.5);
 
       g.selectAll("path")
