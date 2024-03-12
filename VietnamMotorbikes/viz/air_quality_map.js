@@ -162,6 +162,8 @@ createPollutionMapGraphic = function () {
         .duration(500)
         .ease(d3.easeSin)
         .attr("transform", "translate(-100, 0)scale(" + 1 + ")");
+    },
+    function step2() {
       svg
         .transition()
         .duration(500)

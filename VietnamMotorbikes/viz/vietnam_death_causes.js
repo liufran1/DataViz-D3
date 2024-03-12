@@ -1,9 +1,9 @@
 createDeathBarGraphic = function () {
-  var scales = {};
+  var deathscales = {};
   d3.csv("./data/VietnamDeathCauses_1990-2019.csv", d3.autoType).then(
     function (deathData) {
       // Set up margins and dimensions
-      const margin = { top: 20, right: 20, bottom: 30, left: 300 };
+      const margin = { top: 20, right: 200, bottom: 30, left: 250 };
       const width = 800 - margin.left - margin.right;
       const height = 400 - margin.top - margin.bottom;
 
@@ -27,7 +27,7 @@ createDeathBarGraphic = function () {
         .domain([0, d3.max(filteredData, (d) => d.value)])
         .range([0, width]);
 
-      scales["xScale"] = xScale;
+      deathscales["xScale"] = xScale;
 
       const yScale = d3
         .scaleBand()
@@ -53,6 +53,8 @@ createDeathBarGraphic = function () {
         // ]);
         .range(d3.schemeCategory10);
 
+      deathscales["colorScale"] = colorScale;
+
       // Create bars
       svg
         .selectAll(".DeathBar")
@@ -65,12 +67,10 @@ createDeathBarGraphic = function () {
         .attr("height", yScale.bandwidth())
         .style("fill", (d) => colorScale(d.categories))
         .attr("width", 0)
-        .transition()
-        .duration(3000)
-        .attr("width", (d) => xScale(d.value))
-        .delay((d, i) => {
-          return i * 100;
-        });
+        .attr("id", "causes-of-death")
+        // .transition()
+        // .duration(500)
+        .attr("width", (d) => xScale(d.value));
 
       // Add axes
       const xAxis = d3.axisBottom(xScale);
@@ -90,15 +90,26 @@ createDeathBarGraphic = function () {
 
   var steps = [
     function step0() {
-      d3.selectAll(".DeathBar")
-        .transition()
-        .duration(1000)
-        .attr("width", (d) => scales["xScale"].call(d.value))
-        .delay((d, i) => {
-          return i * 100;
-        });
+      // d3.selectAll("#causes-of-death")
+      //   .transition()
+      //   .duration(500)
+      //   .attr("width", (d) => deathscales["xScale"].call(d.value))
+      //   .delay((d, i) => {
+      //     return i * 100;
+      //   });
+      console.log("Death bars waypoint 0 triggered");
     },
-    function step1() {},
+    function step1() {
+      d3.selectAll("#causes-of-death")
+        .transition()
+        .duration(500)
+        .attr("fill", (d) =>
+          d["categories"] == "Environmental Factors"
+            ? deathscales["colorScale"].call(d["categories"])
+            : "grey",
+        );
+      console.log("Death bars waypoint 1 triggered");
+    },
   ];
 
   return {

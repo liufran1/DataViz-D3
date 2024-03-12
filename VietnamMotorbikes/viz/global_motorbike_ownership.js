@@ -110,14 +110,10 @@ createMotorbikeBarsGraphic = function () {
 
   var steps = [
     function step0() {
-      // TO DO: data step: animate in bars, highlight SEAsia
-      // d3.selectAll("#motorbikeOwnsBar").attr("fill", (d) =>
-      //   globalParams["colorScale"].call(d["SEAsia"]),
-      // );
       d3.selectAll("#motorbikeOwnsBar")
         .transition()
         .ease(d3.easeSin)
-        .duration(3000)
+        .duration(500)
         .attr("y", (d) => yScale(d["HouseholdMotorbikeOwnership"]))
         .attr(
           "height",
@@ -125,11 +121,10 @@ createMotorbikeBarsGraphic = function () {
         );
     },
     function step1() {
-      // TO DO: data step: fade out everything but Vietnam
       d3.selectAll("#motorbikeOwnsBar")
-        .transition()
+        // .transition()
         // .ease(d3.easeSin)
-        .duration(500)
+        // .duration(500) // Transition goes to 0 first befor going to 0.5
         .attr("opacity", 0.5);
 
       d3.selectAll("#vietnammotorbikeOwnsBar").attr("opacity", 1);
@@ -137,6 +132,6 @@ createMotorbikeBarsGraphic = function () {
     function step2() {},
   ];
   return {
-    update: update, // make the update function callable as var graphic = createGraphic(".graphic"); graphic.update
+    update: update,
   };
 };

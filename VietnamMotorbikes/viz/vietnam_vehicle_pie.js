@@ -197,10 +197,10 @@ createPollutantPie = function () {
       );
     },
     function step2() {
-      console.log(document.getElementById("pollutant_select"));
+      // console.log(document.getElementById("pollutant_select"));
     },
     function step3() {
-      console.log(document.getElementById("pollutant_select"));
+      // console.log(document.getElementById("pollutant_select"));
     },
   ];
   return {

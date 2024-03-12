@@ -237,7 +237,13 @@ createCarbonCompareBars = function () {
         .attr(
           "width",
           (d) => carbonScales["VNScale"](0) - carbonScales["VNScale"](d.value),
-        )
+        );
+    },
+    function step2() {
+      svg
+        .selectAll("#vnBars")
+        .transition()
+        .duration(500)
         .attr(
           "y",
           (d) =>
@@ -254,7 +260,6 @@ createCarbonCompareBars = function () {
       svg.selectAll("#y-axis-us").remove().transition().duration(500);
       drawAxes(svg, carbonScales, "VNScale-y");
     },
-    function step2() {},
   ];
   return {
     update: update,
