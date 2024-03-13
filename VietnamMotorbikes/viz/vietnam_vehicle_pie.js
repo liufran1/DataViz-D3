@@ -171,8 +171,8 @@ createPollutantPie = function () {
       ];
       // createButtons();
 
-      // plotPie(pollutionBreakdown, "CO");
-      initPie(pollutionBreakdown, "CO");
+      plotPie(pollutionBreakdown, "PM10");
+      // initPie(pollutionBreakdown, "CO");
     },
   );
   function update(step) {
