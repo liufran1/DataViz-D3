@@ -170,6 +170,17 @@ section {
 
 }
 
+.graphic__prose .overlap-trigger {
+  z-index: 1;
+  position: relative;
+  background-color: #f8f9fc;
+  padding-bottom: 3vh;
+  padding-top: 3vh;
+  padding-left: 4rem;
+  opacity: 0.9;
+  min-height: 0;
+}
+
 .graphic__vis {
   position: absolute;
   top: 0;
@@ -178,6 +189,12 @@ section {
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   height: 100vh;
+}
+
+.padding_text {
+  min-height: 240px;
+  padding-bottom: 150vh;
+  font-size: 3vh
 }
 
 .graphic__vis.is-fixed {

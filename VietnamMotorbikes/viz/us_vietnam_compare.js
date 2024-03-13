@@ -119,6 +119,34 @@ createCarbonCompareBars = function () {
             .text("Tonnes CO2 equivalent");
 
           svg
+            .append("text")
+            .attr(
+              "transform",
+              "translate(" +
+                (barWidth + carbonScales["USScale"](0)) +
+                "," +
+                0 +
+                ")",
+            )
+            .attr("text-anchor", "middle")
+            .text("United States");
+
+          svg
+            .append("text")
+            .attr(
+              "transform",
+              "translate(" +
+                (-barWidth + carbonScales["VNScale"](0)) +
+                "," +
+                0 +
+                ")",
+            )
+            .attr("id", "vn-emissions-label")
+            .attr("opacity", 0)
+            .attr("text-anchor", "middle")
+            .text("Vietnam");
+
+          svg
             .selectAll(".barUS")
             .data(filteredUSData)
             .enter()
@@ -222,12 +250,17 @@ createCarbonCompareBars = function () {
             3,
         );
 
-      svg.selectAll(".y-axis").remove();
+      svg.selectAll("#y-axis-us").remove().transition().duration(500);
       drawAxes(svg, carbonScales, "USScale-y");
     },
     function step1() {
       svg.selectAll("#x-axis-vn").transition().duration(500).attr("opacity", 1);
       svg.selectAll("#y-axis-vn").transition().duration(500).attr("opacity", 1);
+      svg
+        .selectAll("#vn-emissions-label")
+        .transition()
+        .duration(500)
+        .attr("opacity", 1);
 
       svg
         .selectAll("#vnBars")

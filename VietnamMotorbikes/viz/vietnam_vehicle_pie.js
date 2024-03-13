@@ -107,9 +107,9 @@ createPollutantPie = function () {
             .attr("fill-opacity", 0.7)
             .text(
               (d) =>
-                `${d.data["Vehicle_Type"]}: ${d.data[
-                  "Pollutant_percent"
-                ].toLocaleString()}`,
+                `${d.data["Vehicle_Type"]}: ${d3
+                  .format(".0%")(d.data["Pollutant_percent"])
+                  .toLocaleString()}`,
             ),
         // .text(d => d.data['Pollutant_percent'].toLocaleString("en-US"))
       );

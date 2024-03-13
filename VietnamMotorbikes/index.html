@@ -68,7 +68,9 @@
             <!-- TO DO: fix when the triggers hit -->
             <!-- footnote: before any pitchforks get taken out for using multiple axes on one chart https://observablehq.com/@tophtucker/dual-axes-are-a-great-way-to-show-correlation -->
           </div>
-
+          <p
+            style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh"
+          ></p>
           <div id="motorbike_ownership_bar" class="graphic">
             <div class="graphic__vis" style="margin-left: 0; z-index: 0">
               <script src="./viz/global_motorbike_ownership.js"></script>
@@ -79,19 +81,18 @@
                 ownership has now far surpassed the rest of the world, with over
                 80% of households in owning a motorbike
               </p>
-              <p class="trigger" data-step="1">
-                <!-- style="background-color: #dbdbdb; z-index: 10" -->
-                <!-- TO DO: Update z index -->
+              <p class="trigger overlap-trigger" data-step="1">
                 Vietnam is second only to Thailand
               </p>
               <p class="trigger" data-step="2"></p>
+              <p class="padding_text"></p>
             </div>
           </div>
         </section>
 
         <section id="air_quality">
           <div>
-            <p style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh">
+            <p class="padding_text">
               What has been the impact of all these motorbikes on carbon
               emissions and air pollution?
             </p>
@@ -110,23 +111,34 @@
                 In the United States, transportation is the second largest
                 source of carbon emissions.
               </p>
-              <p class="trigger" data-step="1">
+              <p
+                class="trigger overlap-trigger"
+                data-step="1"
+                style="z-index: 1"
+              >
                 Vietnam is a lower-middle income country going through rapid
                 industrialization. Its total emissions are much less than those
                 of the US, but are growing quickly
               </p>
-              <p class="trigger" data-step="2">
+              <p class="padding_text"></p>
+              <p
+                class="trigger overlap-trigger"
+                data-step="2"
+                style="z-index: 1"
+              >
                 In this industrialization phase, which the US is long past,
                 coal-fired energy generation and manufacturing dominate
                 greenhouse gas production
               </p>
+              <p class="padding_text"></p>
             </div>
           </div>
+          <p class="padding_text"></p>
           <div>
-            <p style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh">
+            <p class="padding_text">
               However, air pollution is more than just greenhouse gases
             </p>
-            <p style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh">
+            <p class="padding_text">
               If we expand beyond just CO2 to look at air pollution broadly,
               transportation dominates, especially if we focus in on cities
             </p>
@@ -170,6 +182,7 @@
               <!-- <button value="N2O">N2O</button> -->
               <button value="CO2">CO2</button>
             </div>
+            <p class="padding_text"></p>
           </div>
         </section>
 
@@ -214,7 +227,7 @@
               </p>
               <!-- TO DO: add more commentary? -->
               <!-- TO DO: filter to top 15 causes -->
-              <!-- TO DO: Fix waypoint trigger -->
+              <p class="padding_text"></p>
             </div>
             <div
               id="health_bar_chart"
@@ -242,7 +255,7 @@
         </section>
 
         <section id="outcomes">
-          <p style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh">
+          <p class="padding_text">
             One category of solutions is the implementation of strict tailpipe
             emissions regulations
           </p>
@@ -252,15 +265,14 @@
               <script src="./viz/vietnam_motorbike_sales.js"></script>
             </div>
             <div class="graphic__prose">
+              <p class="padding_text"></p>
               <p class="trigger" data-step="0">
                 <!-- How has Vietnam responded?  -->
                 Vietnam implemented an emissions standard equivalent to the EU's
                 Euro 2 standard for motorbikes in 2007, and a Euro 3 equivalent
                 standard was implemented in 2017
               </p>
-              <p
-                style="min-height: 240px; padding-bottom: 150vh; font-size: 3vh"
-              >
+              <p class="padding_text">
                 However, as of 2024, while the Euro 5 guidelines apply to all
                 new cars sold since 2022,
                 <!-- <href
@@ -342,14 +354,16 @@
                 rate, and how many people are injured as a result of the dense
                 traffic?
               </p>
-              <p class="trigger" data-step="1">
+              <p class="trigger overlap-trigger" data-step="1">
                 There was one thought that I kept coming back to - 3/4ths of the
                 global population lives in a middle income country like Vietnam
               </p>
-              <p class="trigger" data-step="2">
+              <p class="padding_text"></p>
+              <p class="trigger overlap-trigger" data-step="2">
                 They are all grappling with air pollution, and balancing it
                 against economic development
               </p>
+              <p class="padding_text"></p>
             </div>
           </div>
           <img src="images/PXL_20240116_063110131.MP.jpg" />
@@ -357,6 +371,7 @@
 
         <section id="appendix">
           <a id="appendix"></a>
+          <h1>Notes and Methodology</h1>
           <p>
             Data on number of motorbikes and passenger cars had to be cobbled
             together from different sources that each used different
@@ -364,7 +379,6 @@
             to any kind of rigorous scrutiny, but is ballpark enough for my
             informal purposes
           </p>
-          <h1>Notes and Methodology</h1>
           <h2 id="motorbike-data-sources-">On Data Visualization Choices:</h2>
           <ul>
             <li>
@@ -548,6 +562,7 @@
             <ul>
               <li>
                 <p>
+                  GDP Per Capita:
                   <a
                     href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=VN"
                     >World Bank</a
@@ -556,6 +571,7 @@
               </li>
               <li>
                 <p>
+                  Country Income Classifications:
                   <a
                     href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups"
                     >World Bank Income Groups</a
@@ -579,9 +595,9 @@
                   By source:
                   <a
                     href="https://ourworldindata.org/grapher/ghg-emissions-by-sector?tab=table&amp;time=latest&amp;country=~VNM"
-                    >Climate Watch (2023) – with major processing by Our World
-                    in Data. “Land-use change and forestry” [dataset]. Climate
-                    Watch, “Greenhouse gas emissions by sector” [original
+                    >Climate Watch (2023) - with major processing by Our World
+                    in Data. "Land-use change and forestry" [dataset]. Climate
+                    Watch, "Greenhouse gas emissions by sector" [original
                     data].</a
                   >
                 </p>
@@ -642,7 +658,7 @@
               <li>
                 Deaths by risk factor:
                 <a href="https://ourworldindata.org/outdoor-air-pollution"
-                  >Hannah Ritchie and Max Roser (2022) - “Outdoor Air Pollution”
+                  >Hannah Ritchie and Max Roser (2022) - "Outdoor Air Pollution"
                   Published online at OurWorldInData.org. Retrieved from:
                   &#39;https://ourworldindata.org/outdoor-air-pollution&#39;
                   [Online Resource]</a
