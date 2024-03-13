@@ -98,8 +98,8 @@ createCarbonCompareBars = function () {
           carbonScales["USScale-y"] = yScaleUS;
           carbonScales["VNScale-y"] = yScaleVN;
 
-          console.log(filteredUSData.map((d) => d.variable));
-          console.log(filteredVNData.map((d) => d.variable));
+          // console.log(filteredUSData.map((d) => d.variable));
+          // console.log(filteredVNData.map((d) => d.variable));
 
           let emissionsRatio =
             d3.sum(filteredVNData, (d) => d.value) /
