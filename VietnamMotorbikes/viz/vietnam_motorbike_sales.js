@@ -1,7 +1,9 @@
 createSalesGraphic = function () {
-  const margin = { top: 20, right: 50, bottom: 30, left: 30 };
-  const width = 1000 - margin.left - margin.right;
-  const height = 800 - margin.top - margin.bottom;
+  const margin = { top: 20, right: 40, bottom: 40, left: 30 };
+  const width = (1000 * 2) / 3 - margin.left - margin.right;
+  const height = (800 * 2) / 3 - margin.top - margin.bottom;
+  const labelFontSize = "10px";
+  const labelFontWeight = 400;
 
   var scales = {};
 
@@ -119,34 +121,42 @@ createSalesGraphic = function () {
             .append("text")
             .attr("x", margin.left)
             .attr("y", yScale(15000000))
-            .style("font-size", "15px")
+            .style("font-size", labelFontSize)
             .style("font-weight", 800)
             .style("fill", color("pre_2007_motorbikes"))
-            .text("Motorbikes not covered by any emissions regulations");
+            .text("Motorbikes not covered");
+          svg
+            .append("text")
+            .attr("x", margin.left)
+            .attr("y", yScale(12000000))
+            .style("font-size", labelFontSize)
+            .style("font-weight", 800)
+            .style("fill", color("pre_2007_motorbikes"))
+            .text("by any emissions regulations");
 
           svg
             .append("text")
-            .attr("x", margin.left + 200)
+            .attr("x", margin.left + 200 / 2)
             .attr("y", yScale(35000000))
-            .style("font-size", "15px")
+            .style("font-size", labelFontSize)
             .style("font-weight", 800)
             .style("fill", color("cumsum_sales_2007"))
             .text("Motorbikes covered by the 2007 regulations");
 
           svg
             .append("text")
-            .attr("x", margin.left + 300)
+            .attr("x", margin.left + 300 / 2)
             .attr("y", yScale(55000000))
-            .style("font-size", "15px")
+            .style("font-size", labelFontSize)
             .style("font-weight", 800)
             .style("fill", color("cumsum_sales_2017"))
             .text("Motorbikes covered by the 2017 regulations");
 
           svg
             .append("text")
-            .attr("x", width - margin.right - 200)
+            .attr("x", width - margin.right - 200 / 2)
             .attr("y", yScale(5000000))
-            .style("font-size", "15px")
+            .style("font-size", labelFontSize)
             .style("font-weight", 800)
             .attr("id", "car-ownership-text")
             .attr("opacity", 0)

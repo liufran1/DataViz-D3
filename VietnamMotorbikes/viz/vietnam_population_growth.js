@@ -1,15 +1,21 @@
 createPopulationChangeGraphic = function () {
   var endValues = {};
   var beginValues = {};
+  const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+  const svgHeight = 500;
+  const svgWidth = 500;
+  const width = svgWidth - margin.left - margin.right;
+  const height = svgHeight - margin.top - margin.bottom;
+
+  const svg = d3
+    .select("#population_growth")
+    .append("svg")
+    .attr("width", svgWidth)
+    .attr("height", svgHeight);
 
   d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
     function (vehicleData) {
       // Specify the chart’s dimensions.
-      const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-      const svgHeight = 500;
-      const svgWidth = 500;
-      const width = svgWidth - margin.left - margin.right;
-      const height = svgHeight - margin.top - margin.bottom;
 
       const x = d3
         .scaleLinear()
@@ -20,14 +26,6 @@ createPopulationChangeGraphic = function () {
         .scaleLinear()
         .domain([Math.sqrt(d3.max(vehicleData, (d) => d["Population"])), 0])
         .range([height - margin.bottom, margin.top]);
-
-      const svg = d3
-        .select("#population_growth")
-        .append("svg")
-        .attr("width", svgWidth)
-        .attr("height", svgHeight);
-      // .attr("viewBox", [0, 0, width, height])
-      // .attr("style", "max-width: 100%; height: auto;");
 
       let beginning_data = vehicleData.filter((d) => d["Year"] == 1991)[0];
       let ending_data = vehicleData.filter((d) => d["Year"] == 2022)[0];
@@ -53,13 +51,13 @@ createPopulationChangeGraphic = function () {
       );
       endValues["urbanPop_textx"] = x(
         Math.sqrt(
-          (ending_data["Population"] * ending_data["Urbanization Rate"]) / 200,
-        ),
+          (ending_data["Population"] * ending_data["Urbanization Rate"]) / 100,
+        ) / 2,
       );
       endValues["urbanPop_texty"] = y(
         Math.sqrt(
-          (ending_data["Population"] * ending_data["Urbanization Rate"]) / 200,
-        ),
+          (ending_data["Population"] * ending_data["Urbanization Rate"]) / 100,
+        ) / 2,
       );
       endValues["urbanPop"] =
         (ending_data["Population"] * ending_data["Urbanization Rate"]) / 100;
@@ -123,9 +121,9 @@ createPopulationChangeGraphic = function () {
             Math.sqrt(
               (beginning_data["Population"] *
                 beginning_data["Urbanization Rate"]) /
-                200,
-            ),
-          ),
+                100,
+            ) / 2,
+          ) + 10,
         )
         .attr(
           "y",
@@ -133,8 +131,8 @@ createPopulationChangeGraphic = function () {
             Math.sqrt(
               (beginning_data["Population"] *
                 beginning_data["Urbanization Rate"]) /
-                200,
-            ),
+                100,
+            ) / 2,
           ),
         )
         .style("text-anchor", "middle")
@@ -152,8 +150,8 @@ createPopulationChangeGraphic = function () {
 
       svg
         .append("text")
-        .attr("x", x(Math.sqrt((beginning_data["Population"] * 3) / 4)))
-        .attr("y", y(Math.sqrt((beginning_data["Population"] * 3) / 4)))
+        .attr("x", x((Math.sqrt(beginning_data["Population"]) * 3) / 4))
+        .attr("y", y((Math.sqrt(beginning_data["Population"]) * 3) / 4))
         .style("text-anchor", "middle")
         .attr("id", "pop_title")
         .style("font-size", "15px")
@@ -195,8 +193,8 @@ createPopulationChangeGraphic = function () {
       d3.select("#pop_title")
         .transition()
         .duration(500)
-        .attr("x", endValues["totalPop_textx"])
-        .attr("y", endValues["totalPop_texty"])
+        .attr("x", endValues["totalPop_textx"] + 10)
+        .attr("y", endValues["totalPop_texty"] + 50)
         .text(
           "National Population: " + d3.format(".2s")(endValues["totalPop"]),
         );
