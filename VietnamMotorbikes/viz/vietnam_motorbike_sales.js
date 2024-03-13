@@ -4,6 +4,8 @@ createSalesGraphic = function () {
   const height = (800 * 2) / 3 - margin.top - margin.bottom;
   const labelFontSize = "10px";
   const labelFontWeight = 400;
+  var translatex = 3500;
+  var translatey = 200;
 
   var scales = {};
 
@@ -14,6 +16,9 @@ createSalesGraphic = function () {
     .attr("height", height);
   // .attr("viewBox", [0, 0, width, height]);
   // .attr("style", "max-width: 100%; height: auto;");
+
+  // Append a path for each series.
+  let g = svg.append("g");
 
   d3.csv("data/VietnamVehicles_1991-2022.csv", d3.autoType).then(
     function (vehicleData) {
@@ -60,8 +65,8 @@ createSalesGraphic = function () {
             .y1((d) => yScale(d[1]));
 
           // Add the y-axis, remove the domain line, add grid lines and a label.
-          svg
-            .append("g")
+          //
+          g.append("g")
             .attr("transform", `translate(${margin.left},0)`)
             .call(
               d3
@@ -87,9 +92,6 @@ createSalesGraphic = function () {
           // );
           // .text("↑ Unemployed persons"));
 
-          // Append a path for each series.
-          let g = svg.append("g");
-
           g.selectAll()
             .data(series)
             .join("path")
@@ -110,23 +112,20 @@ createSalesGraphic = function () {
           );
 
           // Append the horizontal axis atop the area.
-          svg
-            .append("g")
+          g.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(
               d3.axisBottom(xScale).tickSizeOuter(0).tickFormat(d3.format("d")),
             );
 
-          svg
-            .append("text")
+          g.append("text")
             .attr("x", margin.left)
             .attr("y", yScale(15000000))
             .style("font-size", labelFontSize)
             .style("font-weight", 800)
             .style("fill", color("pre_2007_motorbikes"))
             .text("Motorbikes not covered");
-          svg
-            .append("text")
+          g.append("text")
             .attr("x", margin.left)
             .attr("y", yScale(12000000))
             .style("font-size", labelFontSize)
@@ -134,8 +133,7 @@ createSalesGraphic = function () {
             .style("fill", color("pre_2007_motorbikes"))
             .text("by any emissions regulations");
 
-          svg
-            .append("text")
+          g.append("text")
             .attr("x", margin.left + 200 / 2)
             .attr("y", yScale(35000000))
             .style("font-size", labelFontSize)
@@ -143,8 +141,7 @@ createSalesGraphic = function () {
             .style("fill", color("cumsum_sales_2007"))
             .text("Motorbikes covered by the 2007 regulations");
 
-          svg
-            .append("text")
+          g.append("text")
             .attr("x", margin.left + 300 / 2)
             .attr("y", yScale(55000000))
             .style("font-size", labelFontSize)
@@ -152,8 +149,15 @@ createSalesGraphic = function () {
             .style("fill", color("cumsum_sales_2017"))
             .text("Motorbikes covered by the 2017 regulations");
 
-          svg
-            .append("text")
+          g.append("text")
+            .attr("x", 550)
+            .attr("y", yScale(72500000))
+            .style("font-size", "2px")
+            .style("font-weight", 800)
+            .style("fill", color("cumsum_sales_ebikes"))
+            .text("Electric motorbikes");
+
+          g.append("text")
             .attr("x", width - margin.right - 200 / 2)
             .attr("y", yScale(5000000))
             .style("font-size", labelFontSize)
@@ -175,29 +179,31 @@ createSalesGraphic = function () {
 
   var steps = [
     function step0() {
-      svg
-        .transition()
+      // svg
+      g.transition()
         .duration(500)
         .ease(d3.easeSin)
         .attr("transform", "translate(-" + 0 + "," + 0 + ")scale(" + 1 + ")");
     },
     function step1() {
-      svg
-        .transition()
+      // svg
+      g.transition()
         .duration(500)
         .ease(d3.easeSin)
         .attr(
           "transform",
-          "translate(-" + 5000 + "," + 1700 + ")scale(" + 7 + ")",
+          "translate(-" + translatex + "," + translatey + ")scale(" + 7 + ")",
         );
-      console.log("waypoint triggered");
     },
     function step2() {
-      svg
-        .transition()
+
+      g.transition()
         .duration(500)
         .ease(d3.easeSin)
         .attr("transform", "translate(-" + 0 + "," + 0 + ")scale(" + 1 + ")");
+
+    },
+    function step3() {
       svg
         .select("#carsLine")
         .attr("stroke-witdh", 4)
@@ -212,13 +218,6 @@ createSalesGraphic = function () {
         .ease(d3.easeSin)
         .duration(500)
         .attr("opacity", 1);
-    },
-    function step3() {
-      svg
-        .transition()
-        .duration(500)
-        .ease(d3.easeSin)
-        .attr("transform", "translate(-" + 0 + "," + 0 + ")scale(" + 1 + ")");
     },
   ];
 
